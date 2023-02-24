@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import '@fontsource/roboto/300.css';
@@ -8,8 +9,10 @@ import '@fontsource/roboto/700.css';
 
 const RegisterForm = () => {
 
+    const router = useRouter();
+
     const [credentials, setCredentials] = useState({
-        username: '',
+        email: '',
         password: ''
     });
 
@@ -17,7 +20,11 @@ const RegisterForm = () => {
         event.preventDefault();
         try {
             const response = await axios.post('http://localhost:3030/api/register', credentials);
-            console.log(response);
+            if (response.data.status === 'success') {
+                router.push('/');
+            } else {
+                console.log("User registration error");
+            }
         } catch (error) {
             console.error(error);
         }
@@ -33,7 +40,7 @@ const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <TextField name="username" value={credentials.username} onChange={handleChange} />
+            <TextField name="email" value={credentials.email} onChange={handleChange} />
             <TextField name="password" type="password" value={credentials.password} onChange={handleChange} />
             <Button type="submit" variant="contained">Register</Button>
         </form>
