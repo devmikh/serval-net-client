@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { useState } from 'react';
+import { TextField, Button } from '@mui/material';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -13,25 +13,32 @@ const RegisterForm = () => {
 
     const [credentials, setCredentials] = useState({
         email: '',
-        password: ''
+        password: '',
+        retypedPassword: ''
     });
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:3030/api/register', credentials);
-            if (response.data.status === 'success') {
-                router.push('/');
-            } else {
-                console.log("User registration error");
+        if (credentials.password === credentials.retypedPassword) {
+            try {
+                const response = await axios.post('http://localhost:3030/api/register', credentials);
+                if (response.data.status === 'success') {
+                    router.push('/');
+                } else {
+                    console.log('User registration error');
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
+        } else {
+            console.log('Passwords do not match');
         }
+        
     };
 
     const handleChange = (event: any) => {
-        const { name, value } = event?.target;
+        const { name, value } = event.target;
+        console.log(value)
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
             [name]: value
@@ -40,9 +47,26 @@ const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <TextField name="email" value={credentials.email} onChange={handleChange} />
-            <TextField name="password" type="password" value={credentials.password} onChange={handleChange} />
-            <Button type="submit" variant="contained">Register</Button>
+            <TextField 
+                name='email'
+                value={credentials.email}
+                label='Email'
+                onChange={handleChange} />
+            <TextField 
+                name='password'
+                type='password'
+                value={credentials.password}
+                label='Password'
+                onChange={handleChange} 
+                autoComplete ='new-password'
+            />
+            <TextField
+                name='retypedPassword'
+                type='password'
+                value={credentials.retypedPassword}
+                label='Confirm Password'
+                onChange={handleChange} />
+            <Button type='submit' variant='contained'>Register</Button>
         </form>
     )
 }
