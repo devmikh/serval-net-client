@@ -19,7 +19,7 @@ const RegisterForm = () => {
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3030/api/login', credentials);
+            const response = await axios.post('http://localhost:3030/api/login', credentials, {withCredentials: true});
             if (response.data.status === 'success') {
                 router.push('/');
             } else {
