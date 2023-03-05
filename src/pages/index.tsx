@@ -1,7 +1,7 @@
-export default function Home() {
-  return (
-    <>
-      <h1>serval-net-client</h1>
-    </>
-  )
+import HomePage from "@/components/HomePage";
+
+const Home = () => {
+  return <HomePage />
 }
+
+export default Home;
