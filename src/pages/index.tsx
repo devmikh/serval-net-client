@@ -1,7 +1,8 @@
 import HomePage from "@/components/HomePage";
+import withAuth from "@/components/withAuth";
 
-const Home = () => {
-    return <HomePage />
+const Home = (props: any) => {
+    return <HomePage { ...props } />
 }
 
-export default Home;
+export default withAuth(Home);

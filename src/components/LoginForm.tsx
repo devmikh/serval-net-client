@@ -16,18 +16,22 @@ const RegisterForm = () => {
         password: ''
     });
 
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
+
     useEffect(() => {
         try {
             axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
                 .then(res => {
                     if (res.status === 200 && res.data.authenticated === true) {
                         console.log("User is already authenticated");
+                        setIsAuthenticated(true);
                         router.push('/');
                     }
                 })
                 .catch(err => {
                     if (err.response.status === 401) {
-                        console.log("Error 401")
+                        setIsAuthenticated(false);
+                        console.log("Error 401");
                     } else {
                         console.log(err.message);
                     }
@@ -61,7 +65,7 @@ const RegisterForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        !isAuthenticated ? (<form onSubmit={handleSubmit}>
             <TextField
                 name='email'
                 value={credentials.email}
@@ -76,7 +80,7 @@ const RegisterForm = () => {
                 autoComplete ='new-password'
             />
             <Button type='submit' variant='contained'>Login</Button>
-        </form>
+        </form>) : null
     )
 }
 
