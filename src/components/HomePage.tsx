@@ -8,13 +8,21 @@ const HomePage = () => {
 
     useEffect(() => {
         try {
-            fetch('http://localhost:3030/api/protected', { credentials: 'include'})
+            axios.get('http://localhost:3030/api/protected')
                 .then(res => {
                     if (res.status === 401) {
                         router.push('/login');
                     } else {
                         console.log("User is authorized");
                     }
+                })
+                .catch(err => {
+                    if (err.response.status === 401) {
+                        console.log("Error 401")
+                    } else {
+                        console.log(err.message);
+                    }
+                    router.push('/login');
                 });
         } catch(error) {
             console.error(error);
