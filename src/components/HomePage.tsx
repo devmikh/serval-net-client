@@ -8,7 +8,7 @@ const HomePage = () => {
 
     useEffect(() => {
         try {
-            axios.get('http://localhost:3030/api/protected')
+            axios.get('http://localhost:3030/api/protected', { withCredentials: true })
                 .then(res => {
                     if (res.status === 401) {
                         router.push('/login');
