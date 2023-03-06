@@ -8,16 +8,14 @@ const HomePage = () => {
 
     useEffect(() => {
         try {
-            axios.get('http://localhost:3030/api/protected', { withCredentials: true })
+            axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
                 .then(res => {
-                    if (res.status === 401) {
-                        router.push('/login');
-                    } else {
-                        console.log("User is authorized");
+                    if (res.status === 200) {
+                        console.log("User is authenticated");
                     }
                 })
                 .catch(err => {
-                    if (err.response.status === 401) {
+                    if (err.response.status === 401 && err.response.data.authenticated === false) {
                         console.log("Error 401")
                     } else {
                         console.log(err.message);
@@ -31,7 +29,7 @@ const HomePage = () => {
 
     const handleClick = async () => {
         try {
-            const response = await axios.get('http://localhost:3030/api/logout')
+            const response = await axios.get('http://localhost:3030/api/logout', { withCredentials: true })
             if (response.data.status === 'success') {
                 router.push('/login');
             }

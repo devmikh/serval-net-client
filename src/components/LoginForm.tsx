@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField, Button } from '@mui/material';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -15,6 +15,28 @@ const RegisterForm = () => {
         email: '',
         password: ''
     });
+
+    useEffect(() => {
+        try {
+            axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
+                .then(res => {
+                    if (res.status === 200 && res.data.authenticated === true) {
+                        console.log("User is already authenticated");
+                        router.push('/');
+                    }
+                })
+                .catch(err => {
+                    if (err.response.status === 401) {
+                        console.log("Error 401")
+                    } else {
+                        console.log(err.message);
+                    }
+                    router.push('/login');
+                });
+        } catch(error) {
+            console.error(error);
+        }
+    }, []);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
