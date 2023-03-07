@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import Image from 'next/image'
 import { useEffect } from "react";
 
 const HomePage = (props: any) => {

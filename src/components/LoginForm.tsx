@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { TextField, Button } from '@mui/material';
+import { Button } from '@mui/material';
+import Textfield from './elements/Textfield';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -66,20 +67,23 @@ const RegisterForm = () => {
 
     return (
         !isAuthenticated ? (<form onSubmit={handleSubmit}>
-            <TextField
+            <Textfield
                 name='email'
                 value={credentials.email}
-                label='Email'
-                onChange={handleChange} />
-            <TextField
+                onChange={handleChange}
+                placeholder="Email"/>
+            <Textfield
                 name='password'
                 type='password'
+                placeholder="Password"
                 value={credentials.password}
-                label='Password'
                 onChange={handleChange}
-                autoComplete ='new-password'
             />
             <Button type='submit' variant='contained'>Login</Button>
+
+            {/* Workaround to disable autocompletion of the form */}
+            <input autoComplete="on" style={{ display: 'none' }}
+                id="fake-hidden-input-to-disable autocomplete"></input>
         </form>) : null
     )
 }
