@@ -1,6 +1,5 @@
 import styles from './Button.module.css';
 
-
 const Button = (props: {
         type?: any,
         text?: string,

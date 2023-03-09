@@ -1,7 +1,6 @@
 import styles from './Textfield.module.css';
 import Image from 'next/image';
 
-
 const Textfield = (props: {
         name?: string,
         placeholder?: string,
