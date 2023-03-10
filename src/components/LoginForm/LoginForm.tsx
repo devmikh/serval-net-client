@@ -82,10 +82,10 @@ const LoginForm = () => {
                 />
                 <Textfield
                     name='password'
-                    type='password'
-                    placeholder="Password"
                     value={credentials.password}
                     onChange={handleChange}
+                    type='password'
+                    placeholder="Password"
                     icon={keyIcon}
                 />
                 <Button type='submit' text='Login' color='primary' />

@@ -6,4 +6,9 @@
     background-color: #FF6600;
     color: #ffffff;
     font-size: 20px;
+    cursor: pointer;
+}
+
+.button:hover {
+    filter: brightness(90%);
 }

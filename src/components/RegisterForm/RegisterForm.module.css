@@ -6,13 +6,13 @@
     height: 100%;
 }
 
-.loginform {
+.registerform {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 470px;
-    height: 430px;
+    height: 520px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     background-color: #EDEDED;
 }
@@ -24,4 +24,3 @@
 .link {
     font-size: 14px;
 }
-

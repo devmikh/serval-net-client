@@ -1,8 +1,7 @@
 .textfield {
     display: flex;
     align-items: center;
-    width: 286px;
-    max-width: 300px;
+    width: 300px;
     padding: 6px;
     border: 1px solid #CCBEBE;
     border-radius: 8px;

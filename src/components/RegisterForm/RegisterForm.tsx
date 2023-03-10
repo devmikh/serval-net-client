@@ -1,11 +1,14 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { TextField, Button } from '@mui/material';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import axios from 'axios';
+import styles from './RegisterForm.module.css';
+import Button from '../core/Button/Button';
+import Textfield from '../core/Textfield/Textfield';
+import atIcon from '../../../public/images/at-solid.svg';
+import keyIcon from '../../../public/images/key-solid.svg';
+import logo from '../../../public/images/serval-logo.svg';
 
 const RegisterForm = () => {
 
@@ -46,28 +49,37 @@ const RegisterForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <TextField 
-                name='email'
-                value={credentials.email}
-                label='Email'
-                onChange={handleChange} />
-            <TextField 
-                name='password'
-                type='password'
-                value={credentials.password}
-                label='Password'
-                onChange={handleChange} 
-                autoComplete ='new-password'
-            />
-            <TextField
-                name='retypedPassword'
-                type='password'
-                value={credentials.retypedPassword}
-                label='Confirm Password'
-                onChange={handleChange} />
-            <Button type='submit' variant='contained'>Register</Button>
-        </form>
+        <div className={styles.container}>
+            <form onSubmit={handleSubmit} className={styles.registerform}>
+                <Image src={logo} alt='logo' height='100' width='100' />
+                <h1 className={styles.h1}>Create new account</h1>
+                <Textfield 
+                    name='email'
+                    value={credentials.email}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    icon={atIcon}   
+                />
+                <Textfield 
+                    name='password'
+                    value={credentials.password}
+                    onChange={handleChange}
+                    type='password'
+                    placeholder="Password"
+                    icon={keyIcon}
+                />
+                <Textfield
+                    name='retypedPassword'
+                    value={credentials.retypedPassword}
+                    onChange={handleChange}
+                    type='password'
+                    placeholder="Confirm password"
+                    icon={keyIcon}
+                />
+                <Button type='submit' text='Register' color='primary' />
+                <Link href="/login" className={styles.link}>sign in</Link>
+            </form>
+        </div>
     )
 }
 
