@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
@@ -19,6 +19,33 @@ const RegisterForm = () => {
         password: '',
         retypedPassword: ''
     });
+
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+    useEffect(() => {
+        try {
+            axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
+                .then(res => {
+                    if (res.status === 200 && res.data.authenticated === true) {
+                        console.log("User is already authenticated");
+                        setIsAuthenticated(true);
+                        router.push('/');
+                    }
+                })
+                .catch(err => {
+                    if (err.response.status === 401) {
+                        setIsAuthenticated(false);
+                        console.log("Error 401");
+                    } else {
+                        console.log(err.message);
+                    }
+                    router.push('/register');
+                });
+        } catch(error) {
+            console.error(error);
+        }
+    }, []);
+
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
@@ -49,6 +76,7 @@ const RegisterForm = () => {
     };
 
     return (
+        !isAuthenticated ? (
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.registerform}>
                 <Image src={logo} alt='logo' height='100' width='100' />
@@ -80,6 +108,7 @@ const RegisterForm = () => {
                 <Link href="/login" className={styles.link}>sign in</Link>
             </form>
         </div>
+        ) : null
     )
 }
 
