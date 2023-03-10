@@ -51,7 +51,7 @@ const RegisterForm = () => {
         event.preventDefault();
         if (credentials.password === credentials.retypedPassword) {
             try {
-                const response = await axios.post('http://localhost:3030/api/register', credentials);
+                const response = await axios.post('http://localhost:3030/api/register', credentials, { withCredentials: true });
                 if (response.data.status === 'success') {
                     router.push('/');
                 } else {
