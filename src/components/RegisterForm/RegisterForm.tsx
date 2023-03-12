@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
-import styles from './RegisterForm.module.css';
+import useCheckAuth from '@/hooks/useCheckAuth';
+import styles from '../styles/authForm.module.css';
 import Button from '../core/Button/Button';
 import Textfield from '../core/Textfield/Textfield';
 import atIcon from '../../../public/images/at-solid.svg';
@@ -14,38 +15,13 @@ const RegisterForm = () => {
 
     const router = useRouter();
 
+    const isLoading = useCheckAuth();
+
     const [credentials, setCredentials] = useState({
         email: '',
         password: '',
         retypedPassword: ''
     });
-
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
-
-    useEffect(() => {
-        try {
-            axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
-                .then(res => {
-                    if (res.status === 200 && res.data.authenticated === true) {
-                        console.log("User is already authenticated");
-                        setIsAuthenticated(true);
-                        router.push('/');
-                    }
-                })
-                .catch(err => {
-                    if (err.response.status === 401) {
-                        setIsAuthenticated(false);
-                        console.log("Error 401");
-                    } else {
-                        console.log(err.message);
-                    }
-                    router.push('/register');
-                });
-        } catch(error) {
-            console.error(error);
-        }
-    }, []);
-
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
@@ -68,7 +44,6 @@ const RegisterForm = () => {
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
-        console.log(value)
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
             [name]: value
@@ -76,9 +51,9 @@ const RegisterForm = () => {
     };
 
     return (
-        !isAuthenticated ? (
+        !isLoading ? (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit} className={styles.registerform}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <Image src={logo} alt='logo' height='100' width='100' />
                 <h1 className={styles.h1}>Create new account</h1>
                 <Textfield 
