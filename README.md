@@ -4,3 +4,4 @@
 
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
