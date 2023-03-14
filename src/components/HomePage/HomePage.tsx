@@ -3,11 +3,17 @@ import { useRouter } from "next/router";
 import Image from 'next/image'
 import { useEffect } from "react";
 
+import { fetchUser } from "@/store/features/user/userSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store";
+
 const HomePage = (props: any) => {
+
+    const dispatch = useDispatch<AppDispatch>();
 
     const router = useRouter();
 
-    const handleClick = async () => {
+    const handleLogoutClick = async () => {
         try {
             const response = await axios.get('http://localhost:3030/api/logout', { withCredentials: true })
             if (response.data.status === 'success') {
@@ -18,10 +24,15 @@ const HomePage = (props: any) => {
         }
     }
 
+    const handleTestClick = async () => {
+        dispatch(fetchUser());
+    };
+
     return (
         <>
             <h1>Home Page (Protected)</h1>
-            <button onClick={() => handleClick()}>Logout</button>
+            <button onClick={() => handleLogoutClick()}>Logout</button>
+            <button onClick={() => handleTestClick()}>Test</button>
         </>
     )
 }
