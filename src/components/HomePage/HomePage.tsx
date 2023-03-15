@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { clearUser } from "@/utils/userUtils";
 
 const HomePage = (props: any) => {
 
@@ -10,8 +11,9 @@ const HomePage = (props: any) => {
 
     const handleLogoutClick = async () => {
         try {
-            const response = await axios.get('http://localhost:3030/api/logout', { withCredentials: true })
+            const response = await axios.get('http://localhost:3030/api/logout', { withCredentials: true });
             if (response.data.status === 'success') {
+                clearUser();
                 router.push('/login');
             }
         } catch(error) {
