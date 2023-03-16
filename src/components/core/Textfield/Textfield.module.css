@@ -1,15 +1,29 @@
 .textfield {
-    display: flex;
-    align-items: center;
     width: 240px;
-    padding: 6px;
+    padding: 6px 0;
     border: none;
-    color: #df9d3b;
-    font-size: 20px;
-    border-bottom: 1px solid #df9d3b;
-    background-color: #6C5F4F;
+    border-bottom: 1px solid var(--yellow);
+    background-color: var(--brown);
+    color: var(--yellow);
+    font-family: inherit;
+    font-size: 18px;
+}
+
+.textfield:hover {
+    transition: 200ms;
+    width: 250px;
+    border-bottom: 1px solid var(--yellow-hover);
 }
 
 .textfield:focus-visible {
     outline: none;
 }
+
+.textfield:-webkit-autofill,
+.textfield:-webkit-autofill:hover, 
+.textfield:-webkit-autofill:focus, 
+.textfield:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--brown) inset !important;
+    -webkit-text-fill-color: var(--yellow) !important;
+}
+

@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    background-color: #6C5F4F;
 }
 
 .form {
@@ -15,23 +14,29 @@
     gap: 24px;
     width: 470px;
     border-radius: 10px;
-    /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
 }
 
 .buttoncontainer {
-    margin-top: 20px;
-    width: 240px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
+    width: 240px;
 }
 
 .icon {
-    filter: invert(89%) sepia(34%) saturate(3294%) hue-rotate(327deg) brightness(90%) contrast(93%);
+    filter: var(--yellow-svg);
     cursor: pointer;
 }
 
+.icon:hover {
+    filter: var(--yellow-svg-hover);
+    height: 34px;
+    width: 34px;
+    transition: 200ms;
+}
+
 .link {
-    font-size: 14px;
     margin-bottom: 20px;
+    font-size: 14px;
 }

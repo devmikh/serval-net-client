@@ -6,8 +6,8 @@ import useCheckAuth from '@/hooks/useCheckAuth';
 import styles from '../styles/authForm.module.css';
 import Button from '../core/Button/Button';
 import Textfield from '../core/Textfield/Textfield';
-import signInIcon from '../../../public/images/sign-in-solid.svg';
-import logo from '../../../public/images/serval-logo.svg';
+import signInIcon from '../../../public/icons/sign-in-solid.svg';
+import logo from '../../../public/icons/serval-logo.svg';
 
 const RegisterForm = () => {
 

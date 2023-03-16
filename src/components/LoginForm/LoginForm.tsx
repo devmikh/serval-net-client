@@ -6,8 +6,8 @@ import useCheckAuth from '@/hooks/useCheckAuth';
 import styles from '../styles/authForm.module.css';
 import Button from '../core/Button/Button';
 import Textfield from '../core/Textfield/Textfield';
-import signUpIcon from '../../../public/images/sign-up-solid.svg';
-import logo from '../../../public/images/serval-logo.svg';
+import signUpIcon from '../../../public/icons/sign-up-solid.svg';
+import logo from '../../../public/icons/serval-logo.svg';
 
 const LoginForm = () => {
 

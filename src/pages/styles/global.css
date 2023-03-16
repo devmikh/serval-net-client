@@ -1,11 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --brown: #6C5F4F;
+    --yellow: #DF9D3B;
+    --yellow-hover: #DBAD68;
+    --yellow-svg: invert(89%) sepia(34%) saturate(3294%) hue-rotate(327deg) brightness(90%) contrast(93%);
+    --yellow-svg-hover: invert(76%) sepia(59%) saturate(395%) hue-rotate(339deg) brightness(89%) contrast(93%);
+}
+
 html,
 body {
+    margin: 0;
     height: 100%;
     padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    background-color: var(--brown);
     font-size: 18px;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body > div {
