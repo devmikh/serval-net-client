@@ -13,18 +13,15 @@ const Textfield = (props: {
     const { name, placeholder, value, onChange, type, icon } = props;
 
     return (
-        <div className={styles.textfield}>
-            {icon ? <Image src={icon} alt='icon' width='16' height='16' className={styles.icon}/> : null}
-            <input
+        <input
             name={name}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
             type={type}
             autoComplete="new-password"
-            className={styles.inputfield}
+            className={styles.textfield}
         />
-        </div>
         
     )
 };

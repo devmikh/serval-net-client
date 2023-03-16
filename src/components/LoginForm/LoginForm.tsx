@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import useCheckAuth from '@/hooks/useCheckAuth';
 import styles from '../styles/authForm.module.css';
 import Button from '../core/Button/Button';
 import Textfield from '../core/Textfield/Textfield';
-import atIcon from '../../../public/images/at-solid.svg';
-import keyIcon from '../../../public/images/key-solid.svg';
+import signUpIcon from '../../../public/images/sign-up-solid.svg';
 import logo from '../../../public/images/serval-logo.svg';
 
 const LoginForm = () => {
@@ -36,6 +34,10 @@ const LoginForm = () => {
         }
     };
 
+    const handleClick = () => {
+        router.push('/register');
+    }
+
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         setCredentials((prevCredentials) => ({
@@ -48,25 +50,23 @@ const LoginForm = () => {
         !isLoading ? (
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.form}>
-                <Image src={logo} alt='logo' height='100' width='100' />
-                <h1 className={styles.h1}>Login</h1>
+                <Image src={logo} alt='logo' height='140' width='140' className={styles.logo} />
                 <Textfield
                     name='email'
                     value={credentials.email}
                     onChange={handleChange}
-                    placeholder="Email"
-                    icon={atIcon}
                 />
                 <Textfield
                     name='password'
                     value={credentials.password}
                     onChange={handleChange}
                     type='password'
-                    placeholder="Password"
-                    icon={keyIcon}
                 />
-                <Button type='submit' text='Login' color='primary' />
-                <Link href="/register" className={styles.link}>create new account</Link>
+                <div className={styles.buttoncontainer}>
+                    <Button type='submit' text='Sign in' color='primary' />
+                    <Image src={signUpIcon} alt='icon' height='32' width='32' onClick={handleClick} className={styles.icon}/>
+                </div>
+                {/* <Link href="/register" className={styles.link}>create new account</Link> */}
                 {/* Workaround to disable autocompletion of the form */}
                 <input autoComplete="on" style={{ display: 'none' }}
                     id="fake-hidden-input-to-disable autocomplete"></input>

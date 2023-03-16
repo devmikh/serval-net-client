@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import useCheckAuth from '@/hooks/useCheckAuth';
 import styles from '../styles/authForm.module.css';
 import Button from '../core/Button/Button';
 import Textfield from '../core/Textfield/Textfield';
-import atIcon from '../../../public/images/at-solid.svg';
-import keyIcon from '../../../public/images/key-solid.svg';
+import signInIcon from '../../../public/images/sign-in-solid.svg';
 import logo from '../../../public/images/serval-logo.svg';
 
 const RegisterForm = () => {
@@ -42,6 +40,10 @@ const RegisterForm = () => {
         
     };
 
+    const handleClick = () => {
+        router.push('/login');
+    }
+
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         setCredentials((prevCredentials) => ({
@@ -54,33 +56,29 @@ const RegisterForm = () => {
         !isLoading ? (
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.form}>
-                <Image src={logo} alt='logo' height='100' width='100' />
-                <h1 className={styles.h1}>Create new account</h1>
+                <Image src={logo} alt='logo' height='140' width='140' />
                 <Textfield 
                     name='email'
                     value={credentials.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    icon={atIcon}   
+                    onChange={handleChange} 
                 />
                 <Textfield 
                     name='password'
                     value={credentials.password}
                     onChange={handleChange}
                     type='password'
-                    placeholder="Password"
-                    icon={keyIcon}
                 />
                 <Textfield
                     name='retypedPassword'
                     value={credentials.retypedPassword}
                     onChange={handleChange}
                     type='password'
-                    placeholder="Confirm password"
-                    icon={keyIcon}
                 />
-                <Button type='submit' text='Register' color='primary' />
-                <Link href="/login" className={styles.link}>sign in</Link>
+                <div className={styles.buttoncontainer}>
+                    <Button type='submit' text='Sign up' color='primary' />
+                    <Image src={signInIcon} alt='icon' height='32' width='32' onClick={handleClick} className={styles.icon}/>
+                </div>
+                
             </form>
         </div>
         ) : null
