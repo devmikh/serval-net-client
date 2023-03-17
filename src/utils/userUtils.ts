@@ -1,15 +1,24 @@
-import store from "@/store/store";
 import Cookies from 'js-cookie';
+import { dispatch, getState } from "@/store/store";
 
-// Remove current user info from state and cookie
+/* Set current user */
+const setUser = (user: any) => {
+    // Set user if user hasn't been set yet
+    if (!getState().user.user) {
+        dispatch({type: 'user/setUser', payload: user });
+    }
+};
+
+/* Remove current user info from state and cookie */
 const clearUser = () => {
     // Clear state
-    store.dispatch({type: 'user/clearUser'});
+    dispatch({type: 'user/clearUser'});
 
     // Clear cookie
     Cookies.remove('user');
 };
 
 export {
-    clearUser
+    clearUser,
+    setUser
 }

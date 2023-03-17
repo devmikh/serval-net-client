@@ -1,19 +1,22 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
 import Image from 'next/image';
-import axios from 'axios';
+
+import Button from '@/components/core/Button/Button';
+import Textfield from '@/components/core/Textfield/Textfield';
+import styles from '@/components/styles/authForm.module.css';
+
 import useCheckAuth from '@/hooks/useCheckAuth';
-import styles from '../styles/authForm.module.css';
-import Button from '../core/Button/Button';
-import Textfield from '../core/Textfield/Textfield';
+
+import { setUser } from '@/utils/userUtils';
+
 import signInIcon from '../../../public/icons/sign-in-solid.svg';
 import logo from '../../../public/icons/serval-logo.svg';
 
 const RegisterForm = () => {
 
     const router = useRouter();
-    const dispatch = useAppDispatch();
     const isLoading = useCheckAuth();
     const [credentials, setCredentials] = useState({
         email: '',
@@ -27,7 +30,7 @@ const RegisterForm = () => {
             try {
                 const response = await axios.post('http://localhost:3030/api/register', credentials, { withCredentials: true });
                 if (response.data.status === 'success') {
-                    dispatch({type: 'user/setUser', payload: response.data.user });
+                    setUser(response.data.user);
                     router.push('/');
                 } else {
                     console.log('User registration error');

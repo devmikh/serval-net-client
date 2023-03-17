@@ -3,7 +3,7 @@ import axios from "axios";
 
 const initialState = {
     loading: false,
-    user: {},
+    user: null,
     error: ''
 };
 
@@ -23,7 +23,7 @@ const userSlice = createSlice({
             state.user = action.payload;
         },
         clearUser(state) {
-            state.user = {};
+            state.user = null;
         }
     },
     extraReducers: builder => {
@@ -37,7 +37,7 @@ const userSlice = createSlice({
         });
         builder.addCase(fetchUser.rejected, (state, action: any) => {
             state.loading = false;
-            state.user = {};
+            state.user = null;
             state.error = action.error.message;
         });
     },

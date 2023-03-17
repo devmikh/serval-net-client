@@ -1,16 +1,12 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch } from "react-redux";
-import { AppDispatch } from '@/store/store';
-import axios from 'axios';
+import { setUser } from '@/utils/userUtils';
 
 // Checks if user is already authenticated. Prevents user from going to /login or /register if already authenticated
 const useCheckAuth = () => {
 
     const router = useRouter();
-
-    const dispatch = useDispatch<AppDispatch>();
-
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -18,7 +14,7 @@ const useCheckAuth = () => {
             axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
                 .then(res => {
                     if (res.data.authenticated === true) {
-                        dispatch({type: 'user/setUser', payload: res.data.user });
+                        setUser(res.data.user);
                         router.push('/');
                     } else {
                         setIsLoading(false);
