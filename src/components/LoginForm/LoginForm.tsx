@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
 import Image from 'next/image';
 import axios from 'axios';
 import useCheckAuth from '@/hooks/useCheckAuth';
@@ -12,9 +13,8 @@ import logo from '../../../public/icons/serval-logo.svg';
 const LoginForm = () => {
 
     const router = useRouter();
-
+    const dispatch = useAppDispatch();
     const isLoading = useCheckAuth();
-
     const [credentials, setCredentials] = useState({
         email: '',
         password: ''
@@ -25,6 +25,7 @@ const LoginForm = () => {
         try {
             const response = await axios.post('http://localhost:3030/api/login', credentials, {withCredentials: true});
             if (response.data.status === 'success') {
+                dispatch({type: 'user/setUser', payload: response.data.user });
                 router.push('/');
             } else {
                 console.log('User login error');

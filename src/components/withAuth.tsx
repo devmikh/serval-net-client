@@ -1,31 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from '@/store/store';
 import axios from 'axios';
 
 const withAuth = (Component: any) => {
 
     const AuthenticatedComponent = () => {
-
         const router = useRouter();
-
-        const dispatch = useDispatch<AppDispatch>();
-
-        const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+        const [isAuthorized, setIsAuthorized] = useState(false);
         useEffect(() => {
             try {
-                axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
+                axios.get('http://localhost:3030/api/is-authorized', { withCredentials: true })
                     .then(res => {
-                        if (res.status === 200) {
-                            setIsAuthenticated(true);
-                            dispatch({type: 'user/setUser', payload: res.data.user });
+                        if (res.status === 200 && res.data.authorized === true) {
+                            setIsAuthorized(true);
                         }
                     })
                     .catch(err => {
-                        if (err.response.status === 401 && err.response.data.authenticated === false) {
-                            setIsAuthenticated(false);
+                        if (err.response.status === 401 && err.response.data.authorized === false) {
+                            setIsAuthorized(false);
                         } else {
                             console.error(err.message);
                         }
@@ -36,8 +28,7 @@ const withAuth = (Component: any) => {
             }
         }, []);
 
-        return isAuthenticated ? <Component /> : null
-
+        return isAuthorized ? <Component /> : null
     };
 
     return AuthenticatedComponent;
