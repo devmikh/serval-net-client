@@ -15,6 +15,7 @@ body {
     height: 100%;
     padding: 0;
     background-color: var(--brown);
+    color: var(--yellow);
     font-size: 18px;
     line-height: 1.6;
     font-family: 'Montserrat', sans-serif;

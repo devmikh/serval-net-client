@@ -1,13 +1,13 @@
-import RegisterForm from "@/components/RegisterForm/RegisterForm";
+import Register from "@/components/Register/Register";
 import Head from "next/head";
 
-export default function Register() {
+export default function RegisterPage() {
     return(
         <>
             <Head>
                 <title>Sign up</title>
             </Head>
-            <RegisterForm />
+            <Register />
         </>
     );
 }

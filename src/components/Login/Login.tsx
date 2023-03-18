@@ -14,7 +14,7 @@ import { setUser } from '@/utils/userUtils';
 import signUpIcon from '../../../public/icons/sign-up-solid.svg';
 import logo from '../../../public/icons/serval-logo.svg';
 
-const LoginForm = () => {
+const Login = () => {
 
     const router = useRouter();
     const isLoading = useCheckAuth();
@@ -80,4 +80,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm;
+export default Login;

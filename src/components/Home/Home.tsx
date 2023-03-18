@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import useCheckAuth from "@/hooks/useCheckAuth";
 import { clearUser } from "@/utils/userUtils";
 
-const HomePage = (props: any) => {
+const Home = (props: any) => {
 
     const user = useSelector((state: any) => state.user);
     const router = useRouter();
@@ -29,4 +29,4 @@ const HomePage = (props: any) => {
     )
 }
 
-export default HomePage;
+export default Home;
