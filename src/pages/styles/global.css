@@ -3,6 +3,7 @@
 /* Global variables */
 :root {
     --brown: #6C5F4F;
+    --brown-gradient: linear-gradient(60deg, rgba(54,49,44,1) 0%, rgba(97,64,34,1) 100%);
     --yellow: #DF9D3B;
     --yellow-hover: #DBAD68;
     --yellow-svg: invert(89%) sepia(34%) saturate(3294%) hue-rotate(327deg) brightness(90%) contrast(93%);
@@ -14,7 +15,8 @@ body {
     margin: 0;
     height: 100%;
     padding: 0;
-    background-color: var(--brown);
+    /* background-color: var(--brown); */
+    background: var(--brown-gradient);
     color: var(--yellow);
     font-size: 18px;
     line-height: 1.6;

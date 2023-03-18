@@ -3,7 +3,8 @@
     padding: 6px 0;
     border: none;
     border-bottom: 1px solid var(--yellow);
-    background-color: var(--brown);
+    /* background-color: var(--brown); */
+    background-color: transparent;
     color: var(--yellow);
     font-family: inherit;
     font-size: 18px;
