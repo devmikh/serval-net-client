@@ -1,4 +1,4 @@
-import Home from "@/components/Home/Home";
+import Home from "@/components/Home";
 import withAuth from "@/components/withAuth";
 
 const HomePage = (props: any) => {

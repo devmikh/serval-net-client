@@ -1,4 +1,4 @@
-import styles from './Textfield.module.css';
+import styles from './index.module.css';
 import Image from 'next/image';
 
 const Textfield = (props: {

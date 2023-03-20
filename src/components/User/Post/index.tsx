@@ -8,7 +8,7 @@ import heartFilledIcon from '../../../../public/icons/heart-filled.svg';
 
 const Post = (props: any) => {
 
-    const [ liked, setLiked ] = useState(true);
+    const [ liked, setLiked ] = useState(false);
 
     const { avatar, fullName, username, date, text } = props;
 

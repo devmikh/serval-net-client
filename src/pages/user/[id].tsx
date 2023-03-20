@@ -1,4 +1,4 @@
-import UserProfile from "@/components/UserProfile/UserProfile";
+import UserProfile from "@/components/UserProfile";
 import avatar from "../../../public/images/avatar.jpg";
 import Post from "@/components/User/Post";
 

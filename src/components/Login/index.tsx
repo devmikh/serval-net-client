@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import Button from '@/components/core/Button/Button';
-import Textfield from '@/components/core/Textfield/Textfield';
+import Button from '@/components/core/Button';
+import Textfield from '@/components/core/Textfield';
 import styles from '@/components/styles/authForm.module.css';
 
 import useCheckAuth from '@/hooks/useCheckAuth';
