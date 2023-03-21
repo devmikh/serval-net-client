@@ -1,5 +1,4 @@
 import styles from './index.module.css';
-import Image from 'next/image';
 
 const Textfield = (props: {
         name?: string,
@@ -7,21 +6,27 @@ const Textfield = (props: {
         value?: string,
         onChange?: any,
         type?: string,
-        icon?: any
+        maxLength?: number,
+        error?: string
     }) => {
 
-    const { name, placeholder, value, onChange, type, icon } = props;
+    const { name, placeholder, value, onChange, type, maxLength, error } = props;
 
     return (
-        <input
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            type={type}
-            autoComplete="new-password"
-            className={styles.textfield}
-        />
+        <div className={styles.textfieldContainer}>
+            <input
+                name={name}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                type={type}
+                autoComplete="new-password"
+                maxLength={maxLength}
+                className={styles.textfield}
+            />
+            <div className={styles.error}>{error}</div>
+        </div>
+        
         
     )
 };

@@ -11,17 +11,17 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 24px;
-    width: 470px;
+    gap: 8px;
+    width: 300px;
     border-radius: 10px;
 }
 
-.buttoncontainer {
+.buttonContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-    width: 240px;
+    width: 100%;
 }
 
 .icon {

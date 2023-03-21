@@ -1,18 +1,23 @@
+.textfieldContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .textfield {
-    width: 240px;
+    width: 300px;
     padding: 6px 0;
     border: none;
     border-bottom: 1px solid var(--yellow);
-    /* background-color: var(--brown); */
     background-color: transparent;
-    color: var(--yellow);
+    color: white;
     font-family: inherit;
     font-size: 18px;
 }
 
-.textfield:hover {
+.textfield:hover,
+.textfield:focus {
     transition: 200ms;
-    width: 250px;
+    width: 310px;
     border-bottom: 1px solid var(--yellow-hover);
 }
 
@@ -25,6 +30,15 @@
 .textfield:-webkit-autofill:focus, 
 .textfield:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px var(--brown) inset !important;
-    -webkit-text-fill-color: var(--yellow) !important;
+    -webkit-text-fill-color: white !important;
 }
 
+.textfield::placeholder {
+    color: #B7B7B7;
+}
+
+.error {
+    height: 20px;
+    color: #cf460c;
+    font-size: 13px;
+}

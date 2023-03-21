@@ -10,9 +10,15 @@ import styles from '@/components/styles/authForm.module.css';
 import useCheckAuth from '@/hooks/useCheckAuth';
 
 import { setUser } from '@/utils/userUtils';
+import { validateLoginForm } from '@/utils/formUtils';
 
 import signUpIcon from '../../../public/icons/sign-up-solid.svg';
 import logo from '../../../public/icons/serval-logo.svg';
+
+const initialErrorsState = {
+    emailError: '',
+    passwordError: ''
+}
 
 const Login = () => {
 
@@ -22,20 +28,40 @@ const Login = () => {
         email: '',
         password: ''
     });
+    const [errors, setErrors] = useState(initialErrorsState);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:3030/api/login', credentials, {withCredentials: true});
-            if (response.data.status === 'success') {
-                setUser(response.data.user);
-                router.push('/');
-            } else {
-                console.log('User login error');
+
+        // Validate form before sending it to backend
+        const validationResult = validateLoginForm(credentials);
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            ...validationResult.errors
+        }));
+
+        if (validationResult.isValid) {
+            try {
+                const response = await axios.post('http://localhost:3030/api/login', credentials, {withCredentials: true});
+                if (response.status === 200) {
+                    setUser(response.data.user);
+                    router.push('/');
+                }
+            } catch (error: any) {
+                if (error.response.status === 401) {
+                    if (error.response.data.error === 'invalid_credentials') {
+                        setErrors((prevErrors) => ({
+                            ...prevErrors,
+                            passwordError: 'Your email and password do not match'
+                        }));
+                    }
+                } else {
+                    console.error(error);
+                }
+                
             }
-        } catch (error) {
-            console.error(error);
         }
+        
     };
 
     const handleClick = () => {
@@ -43,6 +69,7 @@ const Login = () => {
     }
 
     const handleChange = (event: any) => {
+        setErrors(initialErrorsState);
         const { name, value } = event.target;
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
@@ -59,14 +86,18 @@ const Login = () => {
                     name='email'
                     value={credentials.email}
                     onChange={handleChange}
+                    placeholder='Email'
+                    error={errors.emailError}
                 />
                 <Textfield
                     name='password'
                     value={credentials.password}
                     onChange={handleChange}
                     type='password'
+                    placeholder='Password'
+                    error={errors.passwordError}
                 />
-                <div className={styles.buttoncontainer}>
+                <div className={styles.buttonContainer}>
                     <Button type='submit' text='Sign in' color='primary' />
                     <Image src={signUpIcon} alt='icon' height='32' width='32' onClick={handleClick} className={styles.icon}/>
                 </div>

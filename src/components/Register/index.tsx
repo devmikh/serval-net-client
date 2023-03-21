@@ -10,9 +10,17 @@ import styles from '@/components/styles/authForm.module.css';
 import useCheckAuth from '@/hooks/useCheckAuth';
 
 import { setUser } from '@/utils/userUtils';
+import { validateRegisterForm } from '@/utils/formUtils';
 
 import signInIcon from '../../../public/icons/sign-in-solid.svg';
 import logo from '../../../public/icons/serval-logo.svg';
+
+const initialErrorsState = {
+    emailError: '',
+    usernameError: '',
+    passwordError: '',
+    retypedPasswordError: ''
+}
 
 const RegisterForm = () => {
 
@@ -20,26 +28,45 @@ const RegisterForm = () => {
     const isLoading = useCheckAuth();
     const [credentials, setCredentials] = useState({
         email: '',
+        username: '',
+        fullName: '',
         password: '',
         retypedPassword: ''
     });
+    const [errors, setErrors] = useState(initialErrorsState);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        if (credentials.password === credentials.retypedPassword) {
+
+        // Validate form before sending it to backend
+        const validationResult = validateRegisterForm(credentials);
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            ...validationResult.errors
+        }));
+
+        if (validationResult.isValid) {
             try {
                 const response = await axios.post('http://localhost:3030/api/register', credentials, { withCredentials: true });
-                if (response.data.status === 'success') {
+                if (response.status === 200) {
                     setUser(response.data.user);
                     router.push('/');
-                } else {
-                    console.log('User registration error');
                 }
-            } catch (error) {
-                console.error(error);
+            } catch (error: any) {
+                if (error.response.status === 409) {
+                    if (error.response.data.error === 'duplicate_email') {
+                        setErrors((prevErrors) => ({
+                            ...prevErrors,
+                            emailError: 'This email is already taken'
+                        }));
+                    } else if (error.response.data.error === 'duplicate_username') {
+                        setErrors((prevErrors) => ({
+                            ...prevErrors,
+                            usernameError: 'This username is already taken'
+                        }));
+                    }
+                }
             }
-        } else {
-            console.log('Passwords do not match');
         }
         
     };
@@ -49,6 +76,7 @@ const RegisterForm = () => {
     }
 
     const handleChange = (event: any) => {
+        setErrors(initialErrorsState);
         const { name, value } = event.target;
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
@@ -64,21 +92,42 @@ const RegisterForm = () => {
                 <Textfield 
                     name='email'
                     value={credentials.email}
-                    onChange={handleChange} 
+                    onChange={handleChange}
+                    placeholder='Email *'
+                    error={errors.emailError}
+                />
+                <Textfield 
+                    name='username'
+                    value={credentials.username}
+                    onChange={handleChange}
+                    placeholder='Username *'
+                    maxLength={30}
+                    error={errors.usernameError}
+                />
+                <Textfield 
+                    name='fullName'
+                    value={credentials.fullName}
+                    onChange={handleChange}
+                    placeholder='Full name (optional)'
+                    maxLength={30}
                 />
                 <Textfield 
                     name='password'
                     value={credentials.password}
                     onChange={handleChange}
                     type='password'
+                    placeholder='Password *'
+                    error={errors.passwordError}
                 />
                 <Textfield
                     name='retypedPassword'
                     value={credentials.retypedPassword}
                     onChange={handleChange}
                     type='password'
+                    placeholder='Confirm password *'
+                    error={errors.retypedPasswordError}
                 />
-                <div className={styles.buttoncontainer}>
+                <div className={styles.buttonContainer}>
                     <Button type='submit' text='Sign up' color='primary' />
                     <Image src={signInIcon} alt='icon' height='32' width='32' onClick={handleClick} className={styles.icon}/>
                 </div>
