@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 import styles from './index.module.css';
 
-import heartIcon from '../../../../public/icons/heart.svg';
-import heartFilledIcon from '../../../../public/icons/heart-filled.svg';
+import heartIcon from '../../../public/icons/heart.svg';
+import heartFilledIcon from '../../../public/icons/heart-filled.svg';
 
 const Post = (props: any) => {
 
