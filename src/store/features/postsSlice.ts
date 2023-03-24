@@ -3,11 +3,11 @@ import axios from "axios";
 
 const initialState = {
     loading: false,
-    posts: null,
+    data: null,
     error: ''
 };
 
-export const fetchPostsByUserId = createAsyncThunk('posts/fetchPostsByUserId', (userId: number) => {
+export const fetchPostsByUserId = createAsyncThunk('posts/fetchPostsByUserId', (userId: string) => {
     return axios
         .get(`http://localhost:3030/api/users/${userId}/posts`)
         .then(response => {
@@ -27,12 +27,12 @@ const postsSlice = createSlice({
         });
         builder.addCase(fetchPostsByUserId.fulfilled, (state, action: { payload: any }) => {
             state.loading = false;
-            state.posts = action.payload;
+            state.data = action.payload;
             state.error = '';
         });
         builder.addCase(fetchPostsByUserId.rejected, (state, action: any) => {
             state.loading = false;
-            state.posts = null;
+            state.data = null;
             state.error = action.error.message;
         });
     },
