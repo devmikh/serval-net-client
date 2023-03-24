@@ -42,8 +42,8 @@ const UserProfile = () => {
                 return (
                     <Post
                         avatar={avatar}
-                        fullName={'Mikhail Serebriakov'}
-                        username={'misha'}
+                        fullName={post.full_name}
+                        username={post.username}
                         date={post.date}
                         text={post.text}
                     />)
