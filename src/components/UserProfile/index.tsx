@@ -10,6 +10,7 @@ import Post from '@/components/Post';
 
 import styles from './index.module.css';
 import avatar from "../../../public/icons/serval-logo.svg";
+import { fetchUserById } from '@/store/features/userSlice';
 
 const UserProfile = () => {
     const router = useRouter();
@@ -17,7 +18,6 @@ const UserProfile = () => {
     const posts = useSelector((state: any) => state.posts);
     const id = router.query.id as string;
 
-    
     useEffect(() => {
         /* We don't want to call our dispatch until our id is there
             (it is undefined during the first render) */
@@ -25,12 +25,13 @@ const UserProfile = () => {
             return
         }
         try {
+            dispatch(fetchUserById(id));
             dispatch(fetchPostsByUserId(id));
         } catch(error: any) {
             console.error(error.message);
         }
         
-    }, [id])
+    }, [id]);
     
 
     return (

@@ -23,7 +23,7 @@ const Home = (props: any) => {
     return (
         <>
             <h1>Home Page (Protected)</h1>
-            <h2>Logged in as: {user && user.loading ? 'loading' : (user.user ? user.user.email : null)}</h2>
+            <h2>Logged in as: {user && user.loading ? 'loading' : (user.data ? user.data.username : null)}</h2>
             <button onClick={() => handleLogoutClick()}>Logout</button>
         </>
     )
