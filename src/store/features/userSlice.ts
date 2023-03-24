@@ -19,12 +19,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
-        setUser(state, action: any) {
-            state.data = action.payload;
-        },
-        clearUser(state) {
-            state.data = null;
-        }
+        
     },
     extraReducers: builder => {
         builder.addCase(fetchUserById.pending, state => {

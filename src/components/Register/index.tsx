@@ -9,7 +9,7 @@ import styles from '@/components/styles/authForm.module.css';
 
 import useCheckAuth from '@/hooks/useCheckAuth';
 
-import { setUser } from '@/utils/userUtils';
+import { setCurrentUser } from '@/utils/currentUserUtils';
 import { validateRegisterForm } from '@/utils/formUtils';
 
 import signInIcon from '../../../public/icons/sign-in-solid.svg';
@@ -49,7 +49,7 @@ const RegisterForm = () => {
             try {
                 const response = await axios.post('http://localhost:3030/api/register', credentials, { withCredentials: true });
                 if (response.status === 200) {
-                    setUser(response.data.user);
+                    setCurrentUser(response.data.user);
                     router.push('/');
                 }
             } catch (error: any) {
