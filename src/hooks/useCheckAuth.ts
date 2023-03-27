@@ -1,12 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { setCurrentUser } from '@/utils/currentUserUtils';
 
-// Checks if user is already authenticated. Prevents user from going to /login or /register if already authenticated
+// Checks if user is authenticated
 const useCheckAuth = () => {
-
-    const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -15,7 +12,6 @@ const useCheckAuth = () => {
                 .then(res => {
                     if (res.data.authenticated === true) {
                         setCurrentUser(res.data.user);
-                        router.push('/');
                     } else {
                         setIsLoading(false);
                     }

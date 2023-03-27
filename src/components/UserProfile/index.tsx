@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { fetchPostsByUserId } from '@/store/features/postsSlice';
+import useCheckAuth from '@/hooks/useCheckAuth';
 
 import Header from './Header';
+import CurrentUser from '@/components/CurrentUser';
 import Post from '@/components/Post';
 
 import styles from './index.module.css';
@@ -17,6 +19,8 @@ const UserProfile = () => {
     const dispatch = useAppDispatch();
     const posts = useSelector((state: any) => state.posts);
     const id = router.query.id as string;
+
+    useCheckAuth();
 
     useEffect(() => {
         /* We don't want to call our dispatch until our id is there
@@ -36,12 +40,14 @@ const UserProfile = () => {
 
     return (
         <div className={styles.profileContainer}>
+            <CurrentUser />
             <Header 
                 avatar={avatar}
             />
             {posts.data && posts.data.map((post: any) => {
                 return (
                     <Post
+                        key={post.post_id}
                         avatar={avatar}
                         fullName={post.full_name}
                         username={post.username}

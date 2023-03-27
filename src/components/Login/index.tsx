@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -23,12 +24,20 @@ const initialErrorsState = {
 const Login = () => {
 
     const router = useRouter();
+    const currentUser = useSelector((state: any) => state.currentUser);
     const isLoading = useCheckAuth();
     const [credentials, setCredentials] = useState({
         email: '',
         password: ''
     });
     const [errors, setErrors] = useState(initialErrorsState);
+    
+    // Redirect user if already authenticated
+    useEffect(() => {
+        if (currentUser.data) {
+            router.push('/');
+        }
+    }, [currentUser]);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
