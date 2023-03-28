@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import moment from 'moment';
 
 import styles from './index.module.css';
 
@@ -26,7 +27,7 @@ const Post = (props: any) => {
                     <span className={styles.fullName}>{fullName}</span>
                     <span className={styles.username}>@{username}</span>
                 </div>
-                <span className={styles.date}>{date}</span>
+                <span className={styles.date}>{ moment(date).startOf('day').fromNow() }</span>
             </div>
             <p className={styles.text}>{text}</p>
             <div className={styles.actionsContainer}>
