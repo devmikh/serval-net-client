@@ -7,7 +7,7 @@ import { clearCurrentUser } from "@/utils/currentUserUtils";
 
 import styles from './index.module.css';
 
-import signOutIcon from '../../../public/icons/sign-out-solid.svg';
+import signOutIcon from '../../../../public/icons/sign-out-solid.svg';
 
 const CurrentUser = () => {
     const currentUser = useSelector((state: any) => state.currentUser);

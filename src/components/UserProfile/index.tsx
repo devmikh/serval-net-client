@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
@@ -7,7 +7,8 @@ import { fetchPostsByUserId } from '@/store/features/postsSlice';
 import useCheckAuth from '@/hooks/useCheckAuth';
 
 import Header from './Header';
-import CurrentUser from '@/components/CurrentUser';
+import CurrentUser from '@/components/core/CurrentUser';
+import PostInput from '@/components/core/PostInput';
 import Post from '@/components/Post';
 
 import styles from './index.module.css';
@@ -18,8 +19,9 @@ const UserProfile = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const posts = useSelector((state: any) => state.posts);
+    const currentUser = useSelector((state: any) => state.currentUser);
     const id = router.query.id as string;
-
+    const [ownPage, setOwnPage] = useState(false);
     useCheckAuth();
 
     useEffect(() => {
@@ -28,6 +30,11 @@ const UserProfile = () => {
         if (!id) {
             return
         }
+        if (currentUser.data) {
+            setOwnPage(Number(id) === currentUser.data.id);
+        } else {
+            setOwnPage(false);
+        }
         try {
             dispatch(fetchUserById(id));
             dispatch(fetchPostsByUserId(id));
@@ -35,15 +42,15 @@ const UserProfile = () => {
             console.error(error.message);
         }
         
-    }, [id]);
+    }, [id, currentUser]);
     
-
     return (
         <div className={styles.profileContainer}>
             <CurrentUser />
             <Header 
                 avatar={avatar}
             />
+            { ownPage && <PostInput /> }
             {posts.data && posts.data.map((post: any) => {
                 return (
                     <Post
