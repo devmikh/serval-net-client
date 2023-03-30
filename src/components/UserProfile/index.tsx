@@ -55,9 +55,11 @@ const UserProfile = () => {
                 return (
                     <Post
                         key={post.post_id}
+                        postId={post.post_id}
                         avatar={avatar}
                         fullName={post.full_name}
                         username={post.username}
+                        userId={post.user_id}
                         date={post.date}
                         text={post.text}
                     />)

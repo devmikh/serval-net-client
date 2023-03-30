@@ -1,4 +1,6 @@
 .postContainer {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 800px;
     border: 2px solid var(--yellow);
@@ -42,7 +44,9 @@
 }
 
 .actionsContainer {
-    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
 }
 
 .heart {
@@ -51,5 +55,14 @@
 }
 
 .heart:hover {
+    filter: var(--yellow-svg-hover);
+}
+
+.trash {
+    filter: var(--yellow-svg);
+    cursor: pointer;
+}
+
+.trash:hover {
     filter: var(--yellow-svg-hover);
 }
