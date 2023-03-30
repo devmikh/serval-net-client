@@ -26,7 +26,7 @@ const PostInput = () => {
         if (postText.length < 1) {
             setError('Post should be at least 1 character in length');
         } else {
-            const response = await axios.post('http://localhost:3030/api/createPost', { text: postText}, {withCredentials: true});
+            const response = await axios.post(`${process.env.SERVER_URL}/api/createPost`, { text: postText}, {withCredentials: true});
             if (response.status === 200) {
                 dispatch(fetchPostsByUserId(user.id));
                 setPostText('');

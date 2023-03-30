@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchUserById = createAsyncThunk('user/fetchUserById', (id: string) => {
     return axios
-        .get(`http://localhost:3030/api/users/${id}`)
+        .get(`${process.env.SERVER_URL}/api/users/${id}`)
         .then(response => {
             return response.data.user;
         });

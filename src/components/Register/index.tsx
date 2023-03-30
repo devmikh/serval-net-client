@@ -56,7 +56,7 @@ const RegisterForm = () => {
 
         if (validationResult.isValid) {
             try {
-                const response = await axios.post('http://localhost:3030/api/register', credentials, { withCredentials: true });
+                const response = await axios.post(`${process.env.SERVER_URL}/api/register`, credentials, { withCredentials: true });
                 if (response.status === 200) {
                     setCurrentUser(response.data.user);
                     router.push('/');

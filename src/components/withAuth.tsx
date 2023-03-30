@@ -9,7 +9,7 @@ const withAuth = (Component: any) => {
         const [isAuthorized, setIsAuthorized] = useState(false);
         useEffect(() => {
             try {
-                axios.get('http://localhost:3030/api/is-authorized', { withCredentials: true })
+                axios.get(`${process.env.SERVER_URL}/api/is-authorized`, { withCredentials: true })
                     .then(res => {
                         if (res.status === 200 && res.data.authorized === true) {
                             setIsAuthorized(true);

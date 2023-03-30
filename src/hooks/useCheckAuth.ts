@@ -8,7 +8,7 @@ const useCheckAuth = () => {
 
     useEffect(() => {
         try {
-            axios.get('http://localhost:3030/api/is-authenticated', { withCredentials: true })
+            axios.get(`${process.env.SERVER_URL}/api/is-authenticated`, { withCredentials: true })
                 .then(res => {
                     if (res.data.authenticated === true) {
                         setCurrentUser(res.data.user);

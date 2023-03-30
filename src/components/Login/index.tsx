@@ -51,7 +51,7 @@ const Login = () => {
 
         if (validationResult.isValid) {
             try {
-                const response = await axios.post('http://localhost:3030/api/login', credentials, {withCredentials: true});
+                const response = await axios.post(`${process.env.SERVER_URL}/api/login`, credentials, {withCredentials: true});
                 if (response.status === 200) {
                     setCurrentUser(response.data.user);
                     router.push('/');

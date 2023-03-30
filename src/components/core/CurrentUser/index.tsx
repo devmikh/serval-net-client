@@ -14,7 +14,7 @@ const CurrentUser = () => {
     const router = useRouter();
     const logout = async () => {
         try {
-            const response = await axios.get('http://localhost:3030/api/logout', { withCredentials: true });
+            const response = await axios.get(`${process.env.SERVER_URL}/api/logout`, { withCredentials: true });
             if (response.data.status === 'success') {
                 clearCurrentUser();
             }
