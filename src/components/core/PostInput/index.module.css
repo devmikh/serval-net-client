@@ -4,6 +4,11 @@
     width: 800px;
 }
 
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .textarea {
     width: 600px;
     height: 60px;
@@ -23,6 +28,13 @@
 
 .textarea::placeholder {
     color: #BBBBBB;
+}
+
+.error {
+    height: 20px;
+    margin-left: 16px;
+    color: #cf460c;
+    font-size: 13px;
 }
 
 .button {

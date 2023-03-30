@@ -13,6 +13,7 @@ const PostInput = () => {
     const user = useSelector((state: any) => state.currentUser.data);
 
     const [postText, setPostText] = useState('');
+    const [error, setError] = useState('');
 
     const handleChange = (event: any) => {
         setPostText(() => event.target.value);
@@ -20,16 +21,27 @@ const PostInput = () => {
 
     const submitPost = async (event: any) => {
         event.preventDefault();
+        setError('');
         
-        const response = await axios.post('http://localhost:3030/api/createPost', { text: postText}, {withCredentials: true});
-        if (response.status === 200) {
-            dispatch(fetchPostsByUserId(user.id));
+        if (postText.length < 1) {
+            setError('Post should be at least 1 character in length');
+        } else {
+            const response = await axios.post('http://localhost:3030/api/createPost', { text: postText}, {withCredentials: true});
+            if (response.status === 200) {
+                dispatch(fetchPostsByUserId(user.id));
+                setPostText('');
+            }
         }
     }
 
     return (
         <form className={styles.container} onSubmit={submitPost}>
-            <textarea name="postText" className={styles.textarea} placeholder="What's on your mind?" maxLength={100} onChange={handleChange} />
+            <div className={styles.inputContainer}>
+                <textarea name="postText" className={styles.textarea} placeholder="What's on your mind?" maxLength={100} onChange={handleChange} value={postText} />
+                <div className={styles.error}>
+                    {error}
+                </div>
+            </div>
             <button type='submit' className={styles.button}>Post</button>
         </form>
     )
