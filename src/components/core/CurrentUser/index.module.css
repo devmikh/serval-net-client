@@ -3,7 +3,7 @@
     align-items: center;
     gap: 10px;
     padding: 10px 10px;
-    border-radius: 20px;
+    border-radius: var(--default-border-radius);
     background-color: var(--yellow);
     color: white;
     cursor: pointer;

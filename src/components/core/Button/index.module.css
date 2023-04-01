@@ -3,7 +3,7 @@
     height: 50px;
     padding: 6px;
     border: 1px solid var(--yellow);
-    border-radius: 18px;
+    border-radius: var(--default-border-radius);
     background-color: transparent;
     color: var(--yellow);
     font-family: inherit;
