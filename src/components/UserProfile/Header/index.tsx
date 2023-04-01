@@ -13,7 +13,7 @@ const Header = (props: any) => {
                 <span className={styles.fullName}>{user.data.full_name}</span>
                 <span className={styles.username}>{user.data.username ? `@${user.data.username}` : null}</span>
                 <span className={styles.postsCount}>{user.data.posts_count ? `${user.data.posts_count} posts` : null}</span>
-                <span className={styles.joinedDate}>{user.data.createdAt && formatDateMonthYear(user.data.created_at)}</span>
+                <span className={styles.joinedDate}>{user.data.created_at ? `Joined in ${formatDateMonthYear(user.data.created_at)}` : null}</span>
             </div>
         </div>
     )
