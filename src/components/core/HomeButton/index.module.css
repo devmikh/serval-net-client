@@ -1,0 +1,12 @@
+.logo {
+    border-radius: 50%;
+    border: 1px solid var(--yellow);
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.logo:hover {
+    border: 1px solid var(--yellow-hover);
+}

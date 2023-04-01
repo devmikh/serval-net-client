@@ -7,7 +7,6 @@ import { fetchPostsByUserId } from '@/store/features/postsSlice';
 import useCheckAuth from '@/hooks/useCheckAuth';
 
 import Header from './Header';
-import CurrentUser from '@/components/core/CurrentUser';
 import PostInput from '@/components/core/PostInput';
 import Post from '@/components/Post';
 
@@ -46,10 +45,9 @@ const UserProfile = () => {
     
     return (
         <div className={styles.profileContainer}>
-            <CurrentUser />
-            <Header 
-                avatar={avatar}
-            />
+            
+            {/* <CurrentUser /> */}
+            <Header avatar={avatar} />
             { ownPage && <PostInput /> }
             {posts.data && posts.data.map((post: any) => {
                 return (

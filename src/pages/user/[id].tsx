@@ -1,8 +1,15 @@
 import UserProfile from "@/components/UserProfile";
+import HomeButton from "@/components/core/HomeButton";
+import CurrentUser from "@/components/core/CurrentUser";
 
 const UserProfilePage = () => {
     return (
-        <UserProfile />
+        <div>
+            <HomeButton />
+            <CurrentUser />
+            <UserProfile />
+        </div>
+        
     );
 }
 

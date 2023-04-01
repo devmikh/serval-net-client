@@ -8,8 +8,16 @@
     font-size: 16px;
     color: var(--brown);
     cursor: pointer;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+.button:hover {
+    background-color: var(--yellow-hover);
 }
 
 .icon {
     filter: var(--brown-svg);
 }
+
