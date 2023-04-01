@@ -39,6 +39,6 @@
 
 .error {
     height: 20px;
-    color: #cf460c;
+    color: var(--red);
     font-size: 13px;
 }

@@ -27,13 +27,13 @@
 }
 
 .textarea::placeholder {
-    color: #BBBBBB;
+    color: var(--grey);
 }
 
 .error {
     height: 20px;
     margin-left: 16px;
-    color: #cf460c;
+    color: var(--red);
     font-size: 13px;
 }
 
