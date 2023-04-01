@@ -28,6 +28,7 @@ const PostInput = () => {
         } else {
             const response = await axios.post(`${process.env.SERVER_URL}/api/createPost`, { text: postText}, {withCredentials: true});
             if (response.status === 200) {
+                dispatch({type: "user/increasePostsCount"});
                 dispatch(fetchPostsByUserId(user.id));
                 setPostText('');
             }

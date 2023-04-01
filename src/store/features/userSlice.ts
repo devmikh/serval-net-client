@@ -3,7 +3,14 @@ import axios from "axios";
 
 const initialState = {
     loading: false,
-    data: null,
+    data: {
+        id: null,
+        email: null,
+        created_at: null,
+        username: null,
+        full_name: null,
+        posts_count: 0
+    },
     error: ''
 };
 
@@ -19,7 +26,12 @@ const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
-        
+        increasePostsCount: state => {
+            state.data.posts_count += 1
+        },
+        decreasePostsCount: state => {
+            state.data.posts_count -= 1
+        }
     },
     extraReducers: builder => {
         builder.addCase(fetchUserById.pending, state => {
@@ -32,7 +44,7 @@ const userSlice = createSlice({
         });
         builder.addCase(fetchUserById.rejected, (state, action: any) => {
             state.loading = false;
-            state.data = null;
+            state.data = initialState.data;
             state.error = action.error.message;
         });
     },

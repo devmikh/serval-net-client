@@ -43,6 +43,7 @@ const Post = (props: any) => {
         try {
             const response = await axios.delete(`${process.env.SERVER_URL}/api/deletePost/${id}`, { withCredentials: true });
             if (response.status === 200) {
+                dispatch({type: "user/decreasePostsCount"});
                 dispatch(fetchPostsByUserId(currentUser.data.id));
             }
         } catch(error) {
