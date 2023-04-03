@@ -3,7 +3,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 800px;
-    border: 2px solid var(--yellow);
+    border: 1px solid var(--yellow);
     border-radius: var(--default-border-radius);
 }
 

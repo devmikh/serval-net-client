@@ -15,7 +15,7 @@
     width: 80%;
     height: 60px;
     padding: 15px;
-    border: 2px solid var(--yellow);
+    border: 1px solid var(--yellow);
     border-radius: var(--default-border-radius);
     background-color: transparent;
     font-size: 18px;
