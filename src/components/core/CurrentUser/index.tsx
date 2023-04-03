@@ -30,7 +30,7 @@ const CurrentUser = () => {
     return (
         <div>
             {currentUser.data ?
-                <div onClick={logout} className={styles.button}>
+                <div onClick={logout} className={styles.button} title='Sign out'>
                     <span>@{currentUser.data.username}</span>
                     <Image src={signOutIcon} alt={'icon'} width={24} className={styles.icon} />
                 </div> :

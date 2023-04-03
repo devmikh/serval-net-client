@@ -12,7 +12,7 @@ const HomeButton = () => {
     }
 
     return (
-        <Image src={logo} alt='logo' width={64} className={styles.logo} onClick={onClick}/>
+        <Image src={logo} alt='logo' width={64} className={styles.logo} onClick={onClick} title='Home' />
     )
 };
 
