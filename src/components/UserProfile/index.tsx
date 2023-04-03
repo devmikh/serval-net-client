@@ -21,6 +21,7 @@ const UserProfile = () => {
     const currentUser = useSelector((state: any) => state.currentUser);
     const id = router.query.id as string;
     const [ownPage, setOwnPage] = useState(false);
+    let content = null;
     useCheckAuth();
 
     useEffect(() => {
@@ -43,13 +44,9 @@ const UserProfile = () => {
         
     }, [id, currentUser]);
     
-    return (
-        <div className={styles.profileContainer}>
-            
-            {/* <CurrentUser /> */}
-            <Header avatar={avatar} />
-            { ownPage && <PostInput /> }
-            {posts.data && posts.data.map((post: any) => {
+    if (posts.data) {
+        if (posts.data.length) {
+            content = posts.data.map((post: any) => {
                 return (
                     <Post
                         key={post.post_id}
@@ -61,7 +58,20 @@ const UserProfile = () => {
                         date={post.date}
                         text={post.text}
                     />)
-            })}
+            })
+        } else {
+            content = 
+                <span className={styles.noPostsPrompt}>
+                    No posts yet...
+                </span>
+        }  
+    }
+
+    return (
+        <div className={styles.profileContainer}>
+            <Header avatar={avatar} />
+            { ownPage && <PostInput /> }
+            {content}
         </div>
     )
 };

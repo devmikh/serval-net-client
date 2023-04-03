@@ -5,3 +5,7 @@
     gap: 40px;
     margin: 0 auto;
 }
+
+.noPostsPrompt {
+    font-style: italic;
+}

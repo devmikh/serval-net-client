@@ -24,11 +24,10 @@ const Header = (props: any) => {
                 <span className={styles.username}>{user.data.username ? `@${user.data.username}` : null}</span>
             </div>
             <div className={styles.statsContainer}>
-                {user.data.posts_count ?
                     <div>
-                        <span className={styles.postsCount}>{user.data.posts_count}</span>
+                        <span className={styles.postsCount}>{user.data.posts_count ? user.data.posts_count : 0}</span>
                         <span> posts</span>
-                    </div> : null}
+                    </div>
                 {user.data.created_at ?
                     <div>
                         <span>Joined in </span>
