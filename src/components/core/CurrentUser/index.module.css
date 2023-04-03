@@ -21,3 +21,12 @@
     filter: var(--brown-svg);
 }
 
+@media only screen and (max-width: 1100px) {
+    .username {
+        display: none;
+    }
+
+    .button {
+        height: 30px;
+    }
+}

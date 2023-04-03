@@ -31,7 +31,7 @@ const CurrentUser = () => {
         <div>
             {currentUser.data ?
                 <div onClick={logout} className={styles.button} title='Sign out'>
-                    <span>@{currentUser.data.username}</span>
+                    <span className={styles.username}>@{currentUser.data.username}</span>
                     <Image src={signOutIcon} alt={'icon'} width={24} className={styles.icon} />
                 </div> :
                 <div onClick={login} className={styles.button}>Sign In</div>
