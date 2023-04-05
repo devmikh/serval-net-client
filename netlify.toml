@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "https://serval-net-server.herokuapp.com"
-  status = 200
