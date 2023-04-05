@@ -8,6 +8,7 @@ const useCheckAuth = () => {
 
     useEffect(() => {
         try {
+            console.log(process.env);
             axios.get(`${process.env.SERVER_URL}/api/is-authenticated`, { withCredentials: true })
                 .then(res => {
                     if (res.data.authenticated === true) {
