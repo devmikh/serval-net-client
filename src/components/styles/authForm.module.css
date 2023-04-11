@@ -1,42 +1,68 @@
 .container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.form {
+.loginForm {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50rem;
+    height: 40rem;
+    border-radius: 10px;
+    background-color: var(--purple-100);
+}
+
+.registerForm {
+    display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 8px;
-    width: 300px;
-    border-radius: var(--default-border-radius);
+    width: 50rem;
+    height: 40rem;
+    border-radius: 10px;
+    background-color: var(--purple-100);
 }
 
-.buttonContainer {
+.inputContainer {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-    width: 100%;
+    gap: 1rem;
+    width: 50%;
 }
 
-.icon {
-    filter: var(--yellow-svg);
+.welcomePrompt {
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.prompt {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.textfieldsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.mainButton {
+    margin-bottom: 1.5rem;
+}
+
+.secondaryButton {
+    margin-top: 1.5rem;
+    border-bottom: 3px solid var(--purple-500);
     cursor: pointer;
+    line-height: 0.8;
 }
 
-.icon:hover {
-    filter: var(--yellow-svg-hover);
-    height: 34px;
-    width: 34px;
-    transition: 200ms;
-}
-
-.link {
-    margin-bottom: 20px;
-    font-size: 14px;
+.secondaryButton:focus,
+.secondaryButton:hover {
+    border-bottom: 3px solid var(--purple-700);
 }

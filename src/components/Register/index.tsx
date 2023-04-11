@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
+import Logo from '../core/Logo';
 import Button from '@/components/core/Button';
 import Textfield from '@/components/core/Textfield';
 import styles from '@/components/styles/authForm.module.css';
@@ -12,9 +12,6 @@ import useCheckAuth from '@/hooks/useCheckAuth';
 
 import { setCurrentUser } from '@/utils/currentUserUtils';
 import { validateRegisterForm } from '@/utils/formUtils';
-
-import signInIcon from '../../../public/icons/sign-in-solid.svg';
-import logo from '../../../public/icons/serval-logo.svg';
 
 const initialErrorsState = {
     emailError: '',
@@ -96,51 +93,52 @@ const RegisterForm = () => {
     return (
         !isLoading ? (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit} className={styles.form}>
-                <Image src={logo} alt='logo' height='140' width='140' />
-                <Textfield 
-                    name='email'
-                    value={credentials.email}
-                    onChange={handleChange}
-                    placeholder='Email *'
-                    error={errors.emailError}
-                />
-                <Textfield 
-                    name='username'
-                    value={credentials.username}
-                    onChange={handleChange}
-                    placeholder='Username *'
-                    maxLength={30}
-                    error={errors.usernameError}
-                />
-                <Textfield 
-                    name='fullName'
-                    value={credentials.fullName}
-                    onChange={handleChange}
-                    placeholder='Full name (optional)'
-                    maxLength={30}
-                />
-                <Textfield 
-                    name='password'
-                    value={credentials.password}
-                    onChange={handleChange}
-                    type='password'
-                    placeholder='Password *'
-                    error={errors.passwordError}
-                />
-                <Textfield
-                    name='retypedPassword'
-                    value={credentials.retypedPassword}
-                    onChange={handleChange}
-                    type='password'
-                    placeholder='Confirm password *'
-                    error={errors.retypedPasswordError}
-                />
-                <div className={styles.buttonContainer}>
-                    <Button type='submit' text='Sign up' color='primary' />
-                    <Image src={signInIcon} alt='icon' height='32' width='32' onClick={handleClick} className={styles.icon}/>
+            <form onSubmit={handleSubmit} className={styles.registerForm}>
+                <Logo />
+                <div className={styles.inputContainer}>
+                    <span className={styles.prompt}>Create new account</span>
+                    <Textfield 
+                        name='email'
+                        value={credentials.email}
+                        onChange={handleChange}
+                        placeholder='Email *'
+                        error={errors.emailError}
+                    />
+                    <Textfield 
+                        name='username'
+                        value={credentials.username}
+                        onChange={handleChange}
+                        placeholder='Username *'
+                        maxLength={30}
+                        error={errors.usernameError}
+                    />
+                    <Textfield 
+                        name='fullName'
+                        value={credentials.fullName}
+                        onChange={handleChange}
+                        placeholder='Full name (optional)'
+                        maxLength={30}
+                    />
+                    <Textfield 
+                        name='password'
+                        value={credentials.password}
+                        onChange={handleChange}
+                        type='password'
+                        placeholder='Password *'
+                        error={errors.passwordError}
+                    />
+                    <Textfield
+                        name='retypedPassword'
+                        value={credentials.retypedPassword}
+                        onChange={handleChange}
+                        type='password'
+                        placeholder='Confirm password *'
+                        error={errors.retypedPasswordError}
+                    />
+                    <Button type='submit' text='Create account' color='primary' className={styles.mainButton} />
+                    <span>OR</span>
+                    <span className={styles.secondaryButton} onClick={handleClick}>Sign in</span>
                 </div>
-                
             </form>
         </div>
         ) : null

@@ -1,8 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
 
 /* Global variables */
 :root {
     /* Colors */
+    --purple-100: hsl(270, 100%, 94%);
+    --purple-200: hsl(270, 100%, 87%);
+    --purple-300: hsl(270, 100%, 80%);
+    --purple-400: hsl(270, 100%, 65%);
+    --purple-500: hsl(270, 100%, 50%);
+    --purple-600: hsl(270, 100%, 32%);
+    --purple-700: hsl(270, 100%, 25%);
+    --purple-800: hsl(270, 100%, 17%);
+    --purple-900: hsl(270, 100%, 10%);
+
+    --grey-100: hsl(0, 0%, 90%);
+    --grey-200: hsl(0, 0%, 85%);
+    --grey-300: hsl(0, 0%, 77%);
+    --grey-400: hsl(0, 0%, 66%);
+    --grey-500: hsl(0, 0%, 58%);
+    --grey-600: hsl(0, 0%, 47%);
+    --grey-700: hsl(0, 0%, 37%);
+    --grey-800: hsl(0, 0%, 27%);
+    --grey-900: hsl(0, 0%, 17%);
+
     --brown: #463728;
     --grey: #958A8A;
     --yellow: #DF9D3B;
@@ -12,8 +33,6 @@
     --yellow-svg-hover: invert(76%) sepia(59%) saturate(395%) hue-rotate(339deg) brightness(89%) contrast(93%);
     --brown-svg: invert(18%) sepia(29%) saturate(632%) hue-rotate(349deg) brightness(95%) contrast(87%);
 
-    /* Misc */
-    --default-border-radius: 10px;
 }
 
 html,
@@ -21,11 +40,15 @@ body {
     margin: 0;
     height: 100%;
     padding: 0;
-    background-color: var(--brown);
-    color: var(--yellow);
-    font-size: 18px;
+    background: linear-gradient(to bottom, var(--purple-400), var(--purple-300));
+    color: var(--purple-900);
+    font-size: 16px;
     line-height: 1.6;
     font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
 }
 
 body > div {
