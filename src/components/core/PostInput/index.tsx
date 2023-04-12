@@ -38,7 +38,7 @@ const PostInput = () => {
 
     return (
         <form className={styles.container} onSubmit={submitPost}>
-            <span className={styles.prompt}>What's on your mind?</span>
+            <span className={styles.prompt}>What&apos;s on your mind?</span>
             <div className={styles.inputContainer}>
                 <textarea name="postText" className={styles.textarea} maxLength={400} onChange={handleChange} value={postText} />
                 {/* <div className={styles.error}>
