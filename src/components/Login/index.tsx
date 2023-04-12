@@ -86,11 +86,11 @@ const Login = () => {
     return (
         !isLoading ? (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit} className={styles.loginForm}>
+            <form onSubmit={handleSubmit} className={`${styles.loginForm} ${styles.form}`}>
                 <h2 className={styles.welcomePrompt}>Welcome to</h2>
-                <Logo />
+                <Logo className={styles.logo} />
                 <span className={styles.prompt}>Have an account?</span>
-                <div className={styles.textfieldsContainer}>
+                <div className={styles.loginInputContainer}>
                     <Textfield
                         name='email'
                         value={credentials.email}
@@ -109,7 +109,7 @@ const Login = () => {
                 </div>
                 
                 <Button type='submit' text='Sign in' color='primary' className={styles.mainButton} />
-                <span>OR</span>
+                <span className={styles.or}>OR</span>
                 <span className={styles.secondaryButton} onClick={handleClick}>Create account</span>
 
                 

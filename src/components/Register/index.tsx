@@ -93,9 +93,9 @@ const RegisterForm = () => {
     return (
         !isLoading ? (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit} className={styles.registerForm}>
-                <Logo />
-                <div className={styles.inputContainer}>
+            <form onSubmit={handleSubmit} className={`${styles.registerForm} ${styles.form}`}>
+                <Logo className={styles.logo} />
+                <div className={styles.registerInputContainer}>
                     <span className={styles.prompt}>Create new account</span>
                     <Textfield 
                         name='email'
@@ -136,7 +136,7 @@ const RegisterForm = () => {
                         error={errors.retypedPasswordError}
                     />
                     <Button type='submit' text='Create account' color='primary' className={styles.mainButton} />
-                    <span>OR</span>
+                    <span className={styles.or}>OR</span>
                     <span className={styles.secondaryButton} onClick={handleClick}>Sign in</span>
                 </div>
             </form>

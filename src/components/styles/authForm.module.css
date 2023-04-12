@@ -6,34 +6,35 @@
     background: linear-gradient(to bottom, var(--purple-400), var(--purple-300));
 }
 
-.loginForm {
+.form {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 50rem;
     height: 40rem;
     border-radius: 10px;
     background-color: var(--purple-100);
+}
+
+.logo {
+    margin-bottom: 3rem;
+}
+
+.loginForm {
+    flex-direction: column;
+    justify-content: center;
 }
 
 .registerForm {
-    display: flex;
     justify-content: space-around;
-    align-items: center;
-    width: 50rem;
-    height: 40rem;
-    border-radius: 10px;
-    background-color: var(--purple-100);
 }
 
-.inputContainer {
+.registerInputContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 50%;
+    width: 16rem;
 }
 
 .welcomePrompt {
@@ -46,7 +47,7 @@
     font-size: 1.3rem;
 }
 
-.textfieldsContainer {
+.loginInputContainer {
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -66,4 +67,54 @@
 .secondaryButton:focus,
 .secondaryButton:hover {
     border-bottom: 3px solid var(--purple-700);
+}
+
+@media only screen and (max-width: 800px) {
+    .form {
+        width: 100%;
+        height: 100%;
+    }
+
+    .logo {
+        margin-bottom: 2rem;
+    }
+
+    .registerForm {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .loginForm {
+        gap: 2rem;
+    }
+
+    .registerInputContainer {
+        width: 60%;
+    }
+
+    .prompt {
+        display: none;
+    }
+
+    .loginInputContainer {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 16rem;
+    }
+
+    .mainButton {
+        margin-bottom: 1rem;
+        width: 100%;
+        font-size: 1.1rem;
+        height: 3rem;
+    }
+
+    .secondaryButton {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .or {
+        display: none;
+    }
 }
