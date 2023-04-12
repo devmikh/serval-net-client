@@ -1,6 +1,7 @@
 .textfieldContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
 }
 
@@ -27,7 +28,7 @@
 }
 
 .error {
-    height: 20px;
-    color: darkred;
-    font-size: 13px;
+    height: 1.5rem;
+    color: var(--dark-red);
+    font-size: 0.8rem;
 }

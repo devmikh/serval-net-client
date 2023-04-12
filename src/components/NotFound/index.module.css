@@ -8,10 +8,18 @@
 
 .logo {
     border-radius: 50%;
-    border: 1px solid var(--yellow);
+    border: 1px solid var(--grey-400);
 }
 
 .message {
     font-size: 18px;
     font-weight: 300;
+}
+
+.homeLink {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    font-size: 1rem;
+    cursor: pointer;
 }
