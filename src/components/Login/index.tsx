@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
+import Logo from '../core/Logo';
 import Button from '@/components/core/Button';
 import Textfield from '@/components/core/Textfield';
 import styles from '@/components/styles/authForm.module.css';
@@ -12,9 +12,6 @@ import useCheckAuth from '@/hooks/useCheckAuth';
 
 import { setCurrentUser } from '@/utils/currentUserUtils';
 import { validateLoginForm } from '@/utils/formUtils';
-
-import signUpIcon from '../../../public/icons/sign-up-solid.svg';
-import logo from '../../../public/icons/serval-logo.svg';
 
 const initialErrorsState = {
     emailError: '',
@@ -89,27 +86,33 @@ const Login = () => {
     return (
         !isLoading ? (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit} className={styles.form}>
-                <Image src={logo} alt='logo' height='140' width='140' className={styles.logo} />
-                <Textfield
-                    name='email'
-                    value={credentials.email}
-                    onChange={handleChange}
-                    placeholder='Email'
-                    error={errors.emailError}
-                />
-                <Textfield
-                    name='password'
-                    value={credentials.password}
-                    onChange={handleChange}
-                    type='password'
-                    placeholder='Password'
-                    error={errors.passwordError}
-                />
-                <div className={styles.buttonContainer}>
-                    <Button type='submit' text='Sign in' color='primary' />
-                    <Image src={signUpIcon} alt='icon' height='32' width='32' onClick={handleClick} className={styles.icon}/>
+            <form onSubmit={handleSubmit} className={`${styles.loginForm} ${styles.form}`}>
+                <h2 className={styles.welcomePrompt}>Welcome to</h2>
+                <Logo className={styles.logo} />
+                <span className={styles.prompt}>Have an account?</span>
+                <div className={styles.loginInputContainer}>
+                    <Textfield
+                        name='email'
+                        value={credentials.email}
+                        onChange={handleChange}
+                        placeholder='Email'
+                        error={errors.emailError}
+                    />
+                    <Textfield
+                        name='password'
+                        value={credentials.password}
+                        onChange={handleChange}
+                        type='password'
+                        placeholder='Password'
+                        error={errors.passwordError}
+                    />
                 </div>
+                
+                <Button type='submit' text='Sign in' color='primary' className={styles.mainButton} />
+                <span className={styles.or}>OR</span>
+                <span className={styles.secondaryButton} onClick={handleClick}>Create account</span>
+
+                
                 {/* <Link href="/register" className={styles.link}>create new account</Link> */}
                 {/* Workaround to disable autocompletion of the form */}
                 <input autoComplete="on" style={{ display: 'none' }}

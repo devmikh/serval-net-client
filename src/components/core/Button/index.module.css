@@ -1,19 +1,27 @@
 .button {
-    width: 160px;
-    height: 50px;
-    padding: 6px;
-    border: 1px solid var(--yellow);
-    border-radius: var(--default-border-radius);
-    background-color: transparent;
-    color: var(--yellow);
+    width: 16rem;
+    max-width: 16rem;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: inherit;
-    font-size: 24px;
+    font-size: 1.3rem;
     cursor: pointer;
+    transition: 0.45s;
 }
 
-.button:hover {
-    border: 1px solid var(--yellow-hover);
-    color: var(--yellow-hover);
-    /* font-size: 25px; */
-    transition: 200ms;
+/* Colors */
+.primary {
+    background-color: var(--purple-500);
+    color: var(--purple-100);
 }
+
+.primary:hover,
+.primary:focus {
+    box-shadow: 
+        0px 4px 4px rgba(0, 0, 0, 0.25),
+        inset -8rem 0 0 0 var(--purple-700),
+        inset 8rem 0 0 0 var(--purple-700);  
+}
+

@@ -1,12 +1,10 @@
 import UserProfile from "@/components/UserProfile";
-import HomeButton from "@/components/core/HomeButton";
-import CurrentUser from "@/components/core/CurrentUser";
+import Navbar from "@/components/Navbar";
 
 const UserProfilePage = () => {
     return (
         <div>
-            <HomeButton />
-            <CurrentUser />
+            <Navbar />
             <UserProfile />
         </div>
         

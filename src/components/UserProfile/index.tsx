@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { fetchPostsByUserId } from '@/store/features/postsSlice';
 import useCheckAuth from '@/hooks/useCheckAuth';
 
-import Header from './Header';
+import Profile from './Profile';
 import PostInput from '@/components/core/PostInput';
 import Post from '@/components/Post';
 
@@ -68,10 +68,13 @@ const UserProfile = () => {
     }
 
     return (
-        <div className={styles.profileContainer}>
-            <Header avatar={avatar} />
-            { ownPage && <PostInput /> }
-            {content}
+        <div className={styles.userProfileContainer}>
+            <Profile avatar={avatar} />
+            
+            <div className={styles.postsContainer}>
+                { ownPage && <PostInput /> }
+                {content}
+            </div>
         </div>
     )
 };

@@ -1,0 +1,14 @@
+.heart {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--red);
+}
+
+.heartIcon {
+    filter: var(--purple-100-svg);
+}

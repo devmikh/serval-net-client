@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from "react-redux";
 import useCheckAuth from "@/hooks/useCheckAuth";
 
-const Home = (props: any) => {
+const Home = () => {
     const router = useRouter();
     const currentUser = useSelector((state: any) => state.currentUser);
     useCheckAuth();

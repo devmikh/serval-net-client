@@ -1,15 +1,11 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import Image from 'next/image';
 
 import { clearCurrentUser } from "@/utils/currentUserUtils";
 
-import styles from './index.module.css';
-
-import signOutIcon from '../../../../public/icons/sign-out-solid.svg';
-
-const CurrentUser = () => {
+const CurrentUser = (props: any) => {
+    const { className } = props;
     const currentUser = useSelector((state: any) => state.currentUser);
     const router = useRouter();
     const logout = async () => {
@@ -27,17 +23,11 @@ const CurrentUser = () => {
         router.push('/login');
     }
 
-    return (
-        <div>
-            {currentUser.data ?
-                <div onClick={logout} className={styles.button} title='Sign out'>
-                    <span className={styles.username}>@{currentUser.data.username}</span>
-                    <Image src={signOutIcon} alt={'icon'} width={24} className={styles.icon} />
-                </div> :
-                <div onClick={login} className={styles.button}>Sign In</div>
-            }
-        </div>
-    )
+    if (currentUser.data) {
+        return <button onClick={logout} className={className}>Sign Out</button>;
+    } else {
+        return <button onClick={login} className={className}>Sign In</button>;
+    }
 }
 
 export default CurrentUser;

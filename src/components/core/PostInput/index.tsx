@@ -16,6 +16,7 @@ const PostInput = () => {
     const [error, setError] = useState('');
 
     const handleChange = (event: any) => {
+        setError('');
         setPostText(() => event.target.value);
     }
 
@@ -37,13 +38,14 @@ const PostInput = () => {
 
     return (
         <form className={styles.container} onSubmit={submitPost}>
+            <span className={styles.prompt}>What's on your mind?</span>
             <div className={styles.inputContainer}>
-                <textarea name="postText" className={styles.textarea} placeholder="What's on your mind?" maxLength={100} onChange={handleChange} value={postText} />
-                <div className={styles.error}>
+                <textarea name="postText" className={styles.textarea} maxLength={400} onChange={handleChange} value={postText} />
+                {/* <div className={styles.error}>
                     {error}
-                </div>
+                </div> */}
             </div>
-            <button type='submit' className={styles.button}>Post</button>
+            <button type='submit' className={styles.button}>Say</button>
         </form>
     )
 }

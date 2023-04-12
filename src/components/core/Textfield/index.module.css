@@ -1,44 +1,34 @@
 .textfieldContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .textfield {
-    width: 300px;
-    padding: 6px 0;
+    width: 100%;
+    height: 2rem;
+    padding: 1rem;
     border: none;
-    border-bottom: 1px solid var(--yellow);
-    background-color: transparent;
-    color: white;
+    border-radius: 10px;
+    background-color: var(--grey-200);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
     font-family: inherit;
-    font-size: 18px;
-}
-
-.textfield:hover,
-.textfield:focus {
-    transition: 200ms;
-    width: 310px;
-    border-bottom: 1px solid var(--yellow-hover);
+    font-size: 1rem;
+    transition: 0.4s;
 }
 
 .textfield:focus-visible {
     outline: none;
 }
 
-.textfield:-webkit-autofill,
-.textfield:-webkit-autofill:hover, 
-.textfield:-webkit-autofill:focus, 
-.textfield:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px var(--brown) inset !important;
-    -webkit-text-fill-color: white !important;
-}
-
-.textfield::placeholder {
-    color: #B7B7B7;
+.textfield:focus,
+.textfield:hover {
+    background-color: var(--grey-300);
 }
 
 .error {
-    height: 20px;
-    color: var(--red);
-    font-size: 13px;
+    height: 1.5rem;
+    color: var(--dark-red);
+    font-size: 0.8rem;
 }
