@@ -91,6 +91,7 @@
 
     .registerInputContainer {
         width: 60%;
+        gap: 0rem;
     }
 
     .prompt {
