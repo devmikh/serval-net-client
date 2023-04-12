@@ -13,3 +13,27 @@
     width: 50%;
     margin: 5rem;
 }
+
+
+@media only screen and (max-width: 1400px) {
+    .userProfileContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .postsContainer {
+        width: 80%;
+        margin: 2rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .userProfileContainer {
+        width: 100%;
+    }
+
+    .postsContainer {
+        width: 100%;
+    }
+}
