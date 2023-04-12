@@ -24,6 +24,10 @@
     --grey-800: hsl(0, 0%, 27%);
     --grey-900: hsl(0, 0%, 17%);
 
+    --red: hsl(0, 97%, 72%);
+
+    --purple-100-svg: invert(89%) sepia(5%) saturate(2825%) hue-rotate(201deg) brightness(103%) contrast(103%);
+
 }
 
 html,

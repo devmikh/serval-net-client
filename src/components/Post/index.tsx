@@ -8,11 +8,10 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 import { formatDate, formatDateFromNow } from '@/utils/timeUtils';
 
-import styles from './index.module.css';
+import HeartIcon from '../core/Icons/HeartIcon';
+import TrashIcon from '../core/Icons/TrashIcon';
 
-import heartIcon from '../../../public/icons/heart.svg';
-import heartFilledIcon from '../../../public/icons/heart-filled.svg';
-import trashIcon from '../../../public/icons/trash-solid.svg';
+import styles from './index.module.css';
 
 const Post = (props: any) => {
 
@@ -63,20 +62,15 @@ const Post = (props: any) => {
             </div>
             <p className={styles.text}>{text}</p>
             <div className={styles.actionsContainer}>
-                <Image
-                    className={styles.heart}
-                    src={ liked ? heartFilledIcon : heartIcon }
-                    alt='like'
-                    width={24}
-                    onClick={() => onLike()}
+                <HeartIcon
+                    onClick={onLike}
+                    liked={liked}
                 />
-                {ownPost ? <Image
-                        className={styles.trash}
-                        src={ trashIcon }
-                        alt='delete'
-                        width={20}
-                        onClick={() => onDelete(postId)}
-                    /> : null
+                {ownPost ?
+                    <TrashIcon
+                        onClick={() => onDelete(postId)} 
+                    />
+                    : null
                 }
             </div>
         </div>
