@@ -5,7 +5,7 @@ import styles from './index.module.css';
 import { formatDateMonthYear } from '@/utils/timeUtils';
 import { useEffect } from 'react';
 
-const Header = (props: any) => {
+const Profile = (props: any) => {
     const { avatar } = props;
     const router = useRouter();
     const user = useSelector((state: any) => state.user);
@@ -17,7 +17,7 @@ const Header = (props: any) => {
     }, [user]);
 
     return (
-        <div className={styles.header}>
+        <div className={styles.profile}>
             <Image className={styles.avatar} src={avatar} alt='avatar' width={100} />
             <div className={styles.nameContainer}>
                 <span className={styles.fullName}>{user.data.full_name}</span>
@@ -38,4 +38,4 @@ const Header = (props: any) => {
     )
 }
 
-export default Header;
+export default Profile;

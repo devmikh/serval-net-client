@@ -24,15 +24,6 @@
     --grey-800: hsl(0, 0%, 27%);
     --grey-900: hsl(0, 0%, 17%);
 
-    --brown: #463728;
-    --grey: #958A8A;
-    --yellow: #DF9D3B;
-    --red: #cf460c;
-    --yellow-hover: #DBAD68;
-    --yellow-svg: invert(89%) sepia(34%) saturate(3294%) hue-rotate(327deg) brightness(90%) contrast(93%);
-    --yellow-svg-hover: invert(76%) sepia(59%) saturate(395%) hue-rotate(339deg) brightness(89%) contrast(93%);
-    --brown-svg: invert(18%) sepia(29%) saturate(632%) hue-rotate(349deg) brightness(95%) contrast(87%);
-
 }
 
 html,
@@ -40,7 +31,7 @@ body {
     margin: 0;
     height: 100%;
     padding: 0;
-    background: linear-gradient(to bottom, var(--purple-400), var(--purple-300));
+    background-color: var(--grey-100);
     color: var(--purple-900);
     font-size: 16px;
     line-height: 1.6;

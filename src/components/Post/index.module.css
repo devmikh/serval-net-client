@@ -2,73 +2,58 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 800px;
-    border: 1px solid var(--yellow);
-    border-radius: var(--default-border-radius);
+    border-radius: 10px;
+    border-left: 1rem solid var(--purple-400);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--grey-200);
 }
 
 .avatar {
-    border: 1px solid var(--yellow);
+    border: 1px solid var(--grey-400);
     border-radius: 50%;
+    background-color: var(--grey-100);
 }
 
 .header {
     display: flex;
     justify-content: flex-start;
-    margin: 20px;
+    margin: 1rem 2rem;
 }
 
 .nameContainer {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .fullName {
-    font-size: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .username {
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .date {
     margin-left: auto;
-    font-size: 16px;
 }
 
 .text {
-    margin: 20px;
-    font-size: 15px;
-    color: white;
+    margin: 1rem 2rem;
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
 }
 
 .actionsContainer {
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    margin: 1rem 2rem;
 }
 
-.heart {
-    filter: var(--yellow-svg);
-    cursor: pointer;
-}
-
-.heart:hover {
-    filter: var(--yellow-svg-hover);
-}
-
-.trash {
-    filter: var(--yellow-svg);
-    cursor: pointer;
-}
-
-.trash:hover {
-    filter: var(--yellow-svg-hover);
-}
-
+/*
 @media only screen and (max-width: 1100px) {
     .postContainer {
         max-width: 1100px;
     }
-}
+} */

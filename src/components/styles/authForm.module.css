@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    background: linear-gradient(to bottom, var(--purple-400), var(--purple-300));
 }
 
 .loginForm {

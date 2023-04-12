@@ -1,0 +1,54 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 20rem;
+    margin: 5rem 0 5rem 5rem;
+    border-top: 1rem solid var(--purple-400);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--grey-200);
+}
+
+.avatar {
+    margin-top: 1rem;
+    border: 1px solid var(--grey-400);
+    border-radius: 50%;
+    background-color: var(--grey-100);
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fullName {
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.username {
+    font-size: 18px;
+}
+
+.statsContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+.postsCount, .joinedDate {
+    font-weight: 700;
+    color: var(--purple-600);
+}
+
+/* @media only screen and (max-width: 1100px) {
+    .header {
+        max-width: 1100px;
+    }
+} */

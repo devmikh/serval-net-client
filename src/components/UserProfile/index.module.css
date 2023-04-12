@@ -1,12 +1,15 @@
-.profileContainer {
+.userProfileContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+
+.postsContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    margin: 0 auto;
-    background-color: var(--grey-100);
-}
-
-.noPostsPrompt {
-    font-style: italic;
+    gap: 2rem;
+    width: 50%;
+    margin: 5rem;
 }
