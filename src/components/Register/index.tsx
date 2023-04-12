@@ -95,6 +95,7 @@ const RegisterForm = () => {
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={`${styles.registerForm} ${styles.form}`}>
                 <Logo className={styles.logo} />
+                {/* <Logo className={styles.logoSmall} size="small"/> */}
                 <div className={styles.registerInputContainer}>
                     <span className={styles.prompt}>Create new account</span>
                     <Textfield 
