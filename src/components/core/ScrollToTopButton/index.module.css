@@ -1,0 +1,26 @@
+.scrollToTopButton {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--purple-400);
+    transition: 0.3s;
+}
+
+.scrollToTopButton:hover {
+    background-color: var(--purple-500);
+}
+
+.icon {
+    filter: var(--white-svg);
+}
+
+.visible {
+    display: block;
+}
