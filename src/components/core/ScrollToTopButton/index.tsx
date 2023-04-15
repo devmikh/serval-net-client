@@ -28,7 +28,7 @@ const ScrollToTopButton = () => {
     }, []);
 
     return (
-        <button className={`${styles.scrollToTopButton} ${visible ? styles.visible : null}`} onClick={scrollToTop}>
+        <button className={`${styles.scrollToTopButton} ${visible ? styles.visible : styles.hidden}`} onClick={scrollToTop}>
             <Image src={arrowIcon} className={styles.icon} alt='scroll up' width={32} height={32}/>
         </button>
     )

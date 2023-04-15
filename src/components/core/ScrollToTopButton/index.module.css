@@ -1,8 +1,6 @@
 .scrollToTopButton {
     position: fixed;
     top: 2rem;
-    right: 2rem;
-    display: none;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -11,6 +9,7 @@
     cursor: pointer;
     background-color: var(--purple-400);
     transition: 0.3s;
+    animation-duration: 0.5s;
 }
 
 .scrollToTopButton:hover {
@@ -22,5 +21,29 @@
 }
 
 .visible {
-    display: block;
+    right: 2rem;
+    animation-name: slideInFromRight;
+}
+
+.hidden {
+    right: -10rem;
+    animation-name: slideOutToRight;
+}
+
+@keyframes slideInFromRight {
+    from {
+        right: -10rem;
+    }
+    to {
+        right: 2rem;
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        right: 2rem;
+    }
+    to {
+        right: -10rem;
+    }
 }
