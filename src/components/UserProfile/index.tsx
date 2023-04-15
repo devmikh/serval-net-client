@@ -9,6 +9,7 @@ import useCheckAuth from '@/hooks/useCheckAuth';
 import Profile from './Profile';
 import PostInput from '@/components/core/PostInput';
 import Post from '@/components/Post';
+import ScrollToTopButton from '../core/ScrollToTopButton';
 
 import styles from './index.module.css';
 import avatar from "../../../public/icons/serval-logo.svg";
@@ -74,6 +75,7 @@ const UserProfile = () => {
             <div className={styles.postsContainer}>
                 { ownPage && <PostInput /> }
                 {content}
+                <ScrollToTopButton />
             </div>
         </div>
     )
