@@ -9,7 +9,7 @@ const Notifications = () => {
     return (
         <div className={styles.notificationsContainer}>
             {notifications.map((notification: any) => {
-                return <Notification id={notification.id} message={notification.message} type={notification.type}/>
+                return <Notification key={notification.id} id={notification.id} message={notification.message} type={notification.type}/>
             })}
         </div>
     )
