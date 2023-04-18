@@ -10,6 +10,9 @@ import styles from '@/components/styles/authForm.module.css';
 
 import useCheckAuth from '@/hooks/useCheckAuth';
 
+import { addNotification } from '@/store/features/notificationSlice';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+
 import { setCurrentUser } from '@/utils/currentUserUtils';
 import { validateRegisterForm } from '@/utils/formUtils';
 
@@ -23,6 +26,7 @@ const initialErrorsState = {
 const RegisterForm = () => {
 
     const router = useRouter();
+    const dispatch = useAppDispatch();
     const currentUser = useSelector((state: any) => state.currentUser);
     const isLoading = useCheckAuth();
     const [credentials, setCredentials] = useState({
@@ -57,6 +61,7 @@ const RegisterForm = () => {
                 if (response.status === 200) {
                     setCurrentUser(response.data.user);
                     router.push('/');
+                    dispatch(addNotification({type: 'success', message: "Signed up successfully"}));
                 }
             } catch (error: any) {
                 if (error.response.status === 409) {
