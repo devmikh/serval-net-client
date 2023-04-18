@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './features/userSlice';
 import currentUserReducer from './features/currentUserSlice';
 import postsReducer from './features/postsSlice';
+import notificationReducer from './features/notificationSlice';
 
 
 export function makeStore() {
@@ -9,7 +10,8 @@ export function makeStore() {
         reducer: {
             user: userReducer,
             currentUser: currentUserReducer,
-            posts: postsReducer
+            posts: postsReducer,
+            notification: notificationReducer
         }
     });
 };

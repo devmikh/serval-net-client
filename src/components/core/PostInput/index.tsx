@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { fetchPostsByUserId } from '@/store/features/postsSlice';
+import { addNotification } from '@/store/features/notificationSlice';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 import styles from './index.module.css';
@@ -31,6 +32,7 @@ const PostInput = () => {
             if (response.status === 200) {
                 dispatch({type: "user/increasePostsCount"});
                 dispatch(fetchPostsByUserId(user.id));
+                dispatch(addNotification({type: 'success', message: "Post published successfully!"}));
                 setPostText('');
             }
         }

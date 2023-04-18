@@ -1,0 +1,15 @@
+.notification {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 20rem;
+    height: 3rem;
+    border: 2px solid var(--green);
+    border-radius: 1rem;
+    background-color: var(--grey-100);
+}
+
+.icon {
+    margin-left: 1rem;
+    filter: var(--green-svg);
+}
