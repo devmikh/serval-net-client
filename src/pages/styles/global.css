@@ -26,10 +26,12 @@
 
     --red: hsl(0, 97%, 72%);
     --dark-red: hsl(0, 100%, 32%);
+    --green: hsl(128, 100%, 27%);
 
     --white-svg: invert(99%) sepia(83%) saturate(7%) hue-rotate(207deg) brightness(114%) contrast(100%);
     --purple-100-svg: invert(89%) sepia(5%) saturate(2825%) hue-rotate(201deg) brightness(103%) contrast(103%);
     --purple-500-svg: invert(11%) sepia(100%) saturate(4993%) hue-rotate(269deg) brightness(111%) contrast(130%);
+    --green-svg: invert(26%) sepia(30%) saturate(4912%) hue-rotate(117deg) brightness(105%) contrast(103%);
 
 }
 
