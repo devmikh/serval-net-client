@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className={styles.navbar}>
             <LogoMin />
             <button className={styles.link} onClick={onClick} title='Home'>
-                My Page
+                Home
             </button>
             <CurrentUser className={`${styles.link} ${styles.logoutLink}`} />
         </div>
