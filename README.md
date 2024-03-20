@@ -75,14 +75,6 @@ As this is the earliest usable version of the app, it will grow over time, and e
 
 This client should be used together with the [back-end of Serval-net application](https://github.com/devmikh/serval-net-server), which will handle requests and manipulate the database.
 
-<a id="demo"></a>
-
-## Demo Link
-
-Try out a deployed version of the app by following this link:
-
-https://serval-net-client.vercel.app/
-
 <a id="tools"></a>
 
 ## Technologies & Tools
