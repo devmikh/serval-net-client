@@ -18,7 +18,7 @@
 ## Description
 
 Serval-net is a social media platform allowing users to share their thoughts with other users.
-Currently it is in the early stage of the development, having limited number of functions available for use. Demo version is available at this [link](https://serval-net-client.vercel.app/).
+Currently it is in the early stage of the development, having limited number of functions available for use.
 
 <a id="current-features"></a>
 
