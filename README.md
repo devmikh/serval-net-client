@@ -9,7 +9,6 @@
   - [Planned features](#planned-features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Demo](#demo)
 - [Technologies & Tools](#tools)
 - [License](#license)
 
